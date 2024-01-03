@@ -12,7 +12,7 @@ from lorem_ipsum_prep import lorumipsum as text
 
 # %%
 
-### generates and saves highly randomized graphs of the log-normal distribution ###
+### generates and saves highly randomized graphs of the exponential distribution ###
 
 # use lorem ipsum to avoid language bias
 words = np.array(text)
@@ -40,29 +40,26 @@ for graph in range(graph_amount):
     fig, ax = plt.subplots()
 
     # example data
-    mu = rng.integers(-3.5,3.5) * rng.random()  # mean of distribution
-    sigma = rng.integers(1,2.5) * rng.random()  # standard deviation of distribution
-    s = rng.lognormal(mu, sigma, 420)
+    lamb = rng.random() + rng.random()  # lambda
+    s = rng.exponential(scale=lamb, size=1000)
 
-    num_bins = rng.integers(15,60)
+    num_bins = rng.integers(20,80)
 
     # randomize color of bins
     for i in range(3):
-
         color = round(random.random(), 1)
         rgb_bin.append(color)
 
     # add alpha 0 to hide bins 50% of the time
-    rand_int = random.random()
-    if rand_int > 0.5:
+    if rng.random() > 0.5:
         rgb_bin.append(0)
 
     # the histogram of the data
-    count, bins, ignored = plt.hist(s, num_bins, density=True, color=rgb_bin) # align='mid'
+    count, bins, ignored = plt.hist(s, 100, density=True, color=rgb_bin)
 
     # add a 'best fit' line
-    x = np.linspace(min(bins), max(bins), 1000)
-    y = np.exp(-(np.log(x) - mu)**2 / (2 * sigma**2)) / (x * sigma * np.sqrt(2 * np.pi))
+    x = np.linspace(min(bins), max(bins))
+    y = lamb*np.exp(-lamb*x)
 
     for i in range(3):
 
@@ -112,7 +109,7 @@ for graph in range(graph_amount):
     # Tweak spacing to prevent clipping of ylabel
     fig.tight_layout()
 
-    fig.savefig(os.path.join('test_graphs', 'lognorm', f'lognorm_{graph}.jpg'))
+    fig.savefig(os.path.join('test_graphs', 'exp', f'exp_{graph}.jpg'))
     plt.close(fig) # save memory usage
 
 # %%

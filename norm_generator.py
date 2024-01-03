@@ -58,7 +58,7 @@ for graph in range(graph_amount):
         rgb_bin.append(0)
 
     # the histogram of the data
-    n, bins, patches = ax.hist(x, num_bins, density=True, color=rgb_bin)
+    count, bins, patches = ax.hist(x, num_bins, density=True, color=rgb_bin)
 
     # add a 'best fit' line
     y = (1 / (np.sqrt(2 * np.pi) * sigma)) * np.exp(-0.5 * (1 / sigma * (bins - mu))**2)
