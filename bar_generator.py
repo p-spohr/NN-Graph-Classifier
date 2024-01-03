@@ -97,7 +97,7 @@ for graph in range(graph_amount):
     ax.set_xlabel(' '.join(np.random.choice(text, size = rng.integers(2,5), replace=False)))
     ax.set_title(' '.join(np.random.choice(text, size = rng.integers(2,5), replace=False)))
 
-    fig.savefig(os.path.join('test_graphs', 'bar', f'bar_{graph}.png'))
+    fig.savefig(os.path.join('test_graphs', 'bar', f'bar_{graph}.jpg'))
     plt.close(fig) # save memory usage
 
 

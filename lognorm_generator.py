@@ -12,7 +12,26 @@ from lorem_ipsum_prep import lorumipsum as text
 
 # %%
 
-### generates and saves highly randomized graphs of the normal distribution ###
+rng = np.random.default_rng()
+mu, sigma = 3., 1. # mean and standard deviation
+s = rng.lognormal(mu, sigma, 1000)
+count, bins, ignored = plt.hist(s, 100, density=True, align='mid')
+
+x = np.linspace(min(bins), max(bins))
+pdf = np.exp(-(np.log(x) - mu)**2 / (2 * sigma**2)) / (x * sigma * np.sqrt(2 * np.pi))
+
+plt.plot(x, pdf, linewidth=2, color='r')
+plt.axis('tight')
+plt.show()
+
+# %%
+
+print(x.shape)
+print(pdf.shape)
+
+# %%
+
+### generates and saves highly randomized graphs of the log-normal distribution ###
 
 # use lorem ipsum to avoid language bias
 words = np.array(text)
@@ -40,11 +59,11 @@ for graph in range(graph_amount):
     fig, ax = plt.subplots()
 
     # example data
-    mu = rng.integers(-80,80)  # mean of distribution
-    sigma = rng.integers(1,40)  # standard deviation of distribution
-    x = rng.normal(loc=mu, scale=sigma, size=420)
+    mu = rng.integers(-3.5,3.5) * rng.random()  # mean of distribution
+    sigma = rng.integers(1,2.5) * rng.random()  # standard deviation of distribution
+    s = rng.lognormal(mu, sigma, 420)
 
-    num_bins = rng.integers(30,120)
+    num_bins = rng.integers(15,60)
 
     # randomize color of bins
     for i in range(3):
@@ -58,10 +77,11 @@ for graph in range(graph_amount):
         rgb_bin.append(0)
 
     # the histogram of the data
-    n, bins, patches = ax.hist(x, num_bins, density=True, color=rgb_bin)
+    n, bins, ignored = plt.hist(s, num_bins, density=True) # align='mid'
 
     # add a 'best fit' line
-    y = (1 / (np.sqrt(2 * np.pi) * sigma)) * np.exp(-0.5 * (1 / sigma * (bins - mu))**2)
+    x = np.linspace(min(bins), max(bins), 1000)
+    y = np.exp(-(np.log(x) - mu)**2 / (2 * sigma**2)) / (x * sigma * np.sqrt(2 * np.pi))
 
     for i in range(3):
 
@@ -73,8 +93,8 @@ for graph in range(graph_amount):
     else:
         line_style = '--'
 
-    ax.plot(bins, y, line_style, color=rgb_line, linewidth=rng.random()*3)
-   
+    ax.plot(x, y, line_style, color=rgb_line, linewidth=rng.random()*3)
+
     # fig face color
     for i in range(3):
 
@@ -109,7 +129,7 @@ for graph in range(graph_amount):
     # Tweak spacing to prevent clipping of ylabel
     fig.tight_layout()
 
-    fig.savefig(os.path.join('test_graphs', 'norm', f'norm_{graph}.jpg'))
+    fig.savefig(os.path.join('test_graphs', 'lognorm', f'lognorm_{graph}.jpg'))
     plt.close(fig) # save memory usage
 
 # %%
