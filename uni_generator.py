@@ -12,7 +12,7 @@ from lorem_ipsum_prep import lorumipsum as text
 
 # %%
 
-### generates and saves highly randomized graphs of the exponetial distribution ###
+### generates and saves highly randomized graphs of the uniform distribution ###
 
 # use lorem ipsum to avoid language bias
 words = np.array(text)
@@ -55,11 +55,14 @@ for graph in range(graph_amount):
         rgb_bin.append(0)
 
     # the histogram of the data
-    count, bins, ignored = plt.hist(s, 100, density=True, color=rgb_bin)
+    a = rng.integers(-5,-1)
+    b = rng.integers(0,5)
+    
+    s = rng.uniform(a,b,1000)
+    count, bins, ignored = plt.hist(s, num_bins, density=True, color=rgb_bin)
 
     # add a 'best fit' line
-    x = np.linspace(min(bins), max(bins))
-    y = lamb*np.exp(-lamb*x)
+    y = 1 /(b - a)
 
     for i in range(3):
 
@@ -71,7 +74,7 @@ for graph in range(graph_amount):
     else:
         line_style = '--'
 
-    ax.plot(x, y, line_style, color=rgb_line, linewidth=rng.random()*3)
+    ax.plot(bins, np.ones_like(bins) * y, line_style, color=rgb_line, linewidth=rng.random()*3)
 
     # fig face color
     for i in range(3):
@@ -106,10 +109,13 @@ for graph in range(graph_amount):
     if rng.random() > 0.5:
         plt.xlim(0)
 
+    plt.vlines(a, ymin=0, ymax=y, colors=rgb_line, linestyles=line_style)
+    plt.vlines(b, ymin=0, ymax=y, colors=rgb_line, linestyles=line_style)
+
     # Tweak spacing to prevent clipping of ylabel
     fig.tight_layout()
 
-    fig.savefig(os.path.join('test_graphs', 'exp', f'exp_{graph}.jpg'))
+    fig.savefig(os.path.join('test_graphs', 'unif', f'unif_{graph}.jpg'))
     plt.close(fig) # save memory usage
 
 # %%
