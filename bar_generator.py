@@ -9,31 +9,17 @@ import os
 
 # %%
 
-# generates highly randomized bar charts
-
-# use lorem ipsum to avoid language bias in model later
-words = np.array(text)
-
-rng = np.random.default_rng()
-
-element_count = rng.integers(low=2, high=8)
-
-words = rng.choice(text, size = element_count, replace=False)
-counts = rng.integers(low=0, high=500, size=element_count)
-
-bar_labels = words
-
-# %%
-
-# generates and saves highly randomized bar charts
+### generates and saves highly randomized bar graphs ###
 
 # use lorem ipsum to avoid language bias
 words = np.array(text)
+rng = np.random.default_rng()
 
 rand_rgb = [] # randomized rgb
 rgb_list = [] # list of rgb values
 rgb_face = [] # face color of figure
 rgb_ax = [] # inside color of figure
+
 rgb_white = (1,1,1)
 rgb_black = (0,0,0)
 graph_amount = 50
@@ -49,7 +35,7 @@ for graph in range(graph_amount):
     fig, ax = plt.subplots()
 
     # determine number of bars
-    element_count = np.random.randint(2,8)
+    element_count = rng.integers(2,8)
 
     # rgb values for each bar in graph
     for col in range(element_count):
@@ -64,8 +50,8 @@ for graph in range(graph_amount):
         rand_rgb = tuple(rand_rgb)
         rgb_list.append(rand_rgb)
 
-    words = np.random.choice(text, size = element_count, replace=False)
-    counts = [np.random.randint(0,500) for num in range(element_count)]
+    words = rng.choice(text, size = element_count, replace=False)
+    counts = rng.integers(low=0, high=500, size=element_count)
 
     bar_labels = words
     bar_colors = rgb_list
@@ -107,8 +93,9 @@ for graph in range(graph_amount):
     ax.set_facecolor(rgb_ax)
 
     # set lorum ipsum labels
-    ax.set_ylabel(' '.join(np.random.choice(text, size = np.random.randint(2,5), replace=False)))
-    ax.set_title(' '.join(np.random.choice(text, size = np.random.randint(2,5), replace=False)))
+    ax.set_ylabel(' '.join(np.random.choice(text, size = rng.integers(2,5), replace=False)))
+    ax.set_xlabel(' '.join(np.random.choice(text, size = rng.integers(2,5), replace=False)))
+    ax.set_title(' '.join(np.random.choice(text, size = rng.integers(2,5), replace=False)))
 
     fig.savefig(os.path.join('test_graphs', 'bar', f'bar_{graph}.png'))
     plt.close(fig) # save memory usage
