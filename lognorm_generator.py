@@ -7,12 +7,16 @@ import numpy as np
 import matplotlib.pyplot as plt
 import random as random
 import os
+import time
 
 from lorem_ipsum_prep import lorumipsum as text
 
 # %%
 
 ### generates and saves highly randomized graphs of the log-normal distribution ###
+
+# measure script runtime
+start_time = time.time()
 
 # use lorem ipsum to avoid language bias
 words = np.array(text)
@@ -28,6 +32,11 @@ rgb_white = (1,1,1)
 rgb_black = (0,0,0)
 graph_amount = 50
 
+# select save directory and format
+save_path = "C:\\Users\\pat_h\\htw_berlin_datasets\\dist_datasets\\lognorm"
+save_format = 'jpg'
+save_dpi = 72
+
 for graph in range(graph_amount):
     
     # reset color lists for each iteration
@@ -39,12 +48,12 @@ for graph in range(graph_amount):
 
     fig, ax = plt.subplots()
 
-    # example data
+    # randomize parameters
     mu = rng.integers(-3.5,3.5) * rng.random()  # mean of distribution
     sigma = rng.integers(1,2.5) * rng.random()  # standard deviation of distribution
-    s = rng.lognormal(mu, sigma, 420)
+    s = rng.lognormal(mean=mu, sigma=sigma, size=rng.integers(50,2000))
 
-    num_bins = rng.integers(15,60)
+    num_bins = rng.integers(15,100)
 
     # randomize color of bins
     for i in range(3):
@@ -106,13 +115,18 @@ for graph in range(graph_amount):
     # add grid and adjust x limit 50% of the time
     if rng.random() > 0.5:
         plt.grid(color='k', linestyle='-', linewidth=rng.random())
+
+    # adjust x limit 50% of the time
     if rng.random() > 0.5:
         plt.xlim(0)
 
     # Tweak spacing to prevent clipping of ylabel
     fig.tight_layout()
 
-    fig.savefig(os.path.join('test_graphs', 'lognorm', f'lognorm_{graph}.jpg'))
+    fig.savefig(os.path.join(save_path, f'lognorm_{graph}.{save_format}'), dpi=72)
     plt.close(fig) # save memory usage
+
+end_time = time.time()
+print(f'Runtime: {round(end_time - start_time, 3)} seconds')
 
 # %%

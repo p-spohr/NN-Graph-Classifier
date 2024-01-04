@@ -13,7 +13,7 @@ from keras import layers
 from keras.models import Sequential
 from keras.saving import save
 
-os.environ['KMP_DUPLICATE_LIB_OK'] = 'True' ## Stops kernal error bug with matplotlib
+os.environ['KMP_DUPLICATE_LIB_OK'] = 'True' ## Stops kernal error bug with matplotlib and tensorflow
 
 
 # %%
