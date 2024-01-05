@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import os
 import time
 
-from lorem_ipsum_prep import lorumipsum as LORUMIPSUM
+from utils.lorem_ipsum_prep import lorumipsum as lorumipsum
 
 # %%
 
@@ -17,7 +17,7 @@ from lorem_ipsum_prep import lorumipsum as LORUMIPSUM
 # measure script runtime
 start_time = time.time()
 # use lorem ipsum to avoid language bias
-LORUMIPSUM = np.array(LORUMIPSUM)
+LORUMIPSUM = np.array(lorumipsum)
 # init random generator
 RNG = np.random.default_rng(12345)
 

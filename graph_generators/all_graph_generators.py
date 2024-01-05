@@ -6,11 +6,11 @@ import os
 import time
 import multiprocessing as mp
 
-from lorem_ipsum_prep import lorumipsum as lorumipsum
+from utils.lorem_ipsum_prep import lorumipsum as LORUMIPSUM
 
 # %%
 
-def unif_graph_generator(save_path:str, num_graphs=100, save_dpi=72, save_format='jpg', lorumipsum=lorumipsum):
+def unif_graph_generator(save_path:str, num_graphs=100, save_dpi=72, save_format='jpg', lorumipsum=LORUMIPSUM):
     ### generates and saves highly randomized graphs of the uniform distribution ###
 
     # measure script runtime
@@ -136,7 +136,7 @@ def unif_graph_generator(save_path:str, num_graphs=100, save_dpi=72, save_format
 
 # %%
 
-def exp_graph_generator(save_path:str, num_graphs=100, save_dpi=72, save_format='jpg', lorumipsum=lorumipsum):
+def exp_graph_generator(save_path:str, num_graphs=100, save_dpi=72, save_format='jpg', lorumipsum=LORUMIPSUM):
     ### generates and saves highly randomized graphs of the exponetial distribution ###
 
     # measure script runtime
@@ -265,7 +265,7 @@ def exp_graph_generator(save_path:str, num_graphs=100, save_dpi=72, save_format=
 
 # %%
 
-def norm_graph_generator(save_path:str, num_graphs=100, save_dpi=72, save_format='jpg', lorumipsum=lorumipsum):
+def norm_graph_generator(save_path:str, num_graphs=100, save_dpi=72, save_format='jpg', lorumipsum=LORUMIPSUM):
     ### generates and saves highly randomized graphs of the normal distribution ###
 
     # measure script runtime
@@ -390,7 +390,7 @@ def norm_graph_generator(save_path:str, num_graphs=100, save_dpi=72, save_format
 
 # %%
 
-def lognorm_graph_generator(save_path:str, num_graphs=100, save_dpi=72, save_format='jpg', lorumipsum=lorumipsum):
+def lognorm_graph_generator(save_path:str, num_graphs=100, save_dpi=72, save_format='jpg', lorumipsum=LORUMIPSUM):
     ### generates and saves highly randomized graphs of the log-normal distribution ###
 
     # measure script runtime

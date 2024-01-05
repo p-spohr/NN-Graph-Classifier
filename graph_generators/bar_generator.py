@@ -1,18 +1,19 @@
 
 # %%
 
-from lorem_ipsum_prep import lorumipsum as text
 import numpy as np
 import matplotlib.pyplot as plt
 import random
 import os
+
+from utils.lorem_ipsum_prep import lorumipsum as lorumipsum
 
 # %%
 
 ### generates and saves highly randomized bar graphs ###
 
 # use lorem ipsum to avoid language bias
-words = np.array(text)
+words = np.array(lorumipsum)
 rng = np.random.default_rng()
 
 rand_rgb = [] # randomized rgb
@@ -50,7 +51,7 @@ for graph in range(graph_amount):
         rand_rgb = tuple(rand_rgb)
         rgb_list.append(rand_rgb)
 
-    words = rng.choice(text, size = element_count, replace=False)
+    words = rng.choice(lorumipsum, size = element_count, replace=False)
     counts = rng.integers(low=0, high=500, size=element_count)
 
     bar_labels = words
@@ -93,9 +94,9 @@ for graph in range(graph_amount):
     ax.set_facecolor(rgb_ax)
 
     # set lorum ipsum labels
-    ax.set_ylabel(' '.join(np.random.choice(text, size = rng.integers(2,5), replace=False)))
-    ax.set_xlabel(' '.join(np.random.choice(text, size = rng.integers(2,5), replace=False)))
-    ax.set_title(' '.join(np.random.choice(text, size = rng.integers(2,5), replace=False)))
+    ax.set_ylabel(' '.join(np.random.choice(lorumipsum, size = rng.integers(2,5), replace=False)))
+    ax.set_xlabel(' '.join(np.random.choice(lorumipsum, size = rng.integers(2,5), replace=False)))
+    ax.set_title(' '.join(np.random.choice(lorumipsum, size = rng.integers(2,5), replace=False)))
 
     fig.savefig(os.path.join('test_graphs', 'bar', f'bar_{graph}.jpg'))
     plt.close(fig) # save memory usage
