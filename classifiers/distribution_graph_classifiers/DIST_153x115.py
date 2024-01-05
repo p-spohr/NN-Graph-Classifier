@@ -18,14 +18,14 @@ os.environ['KMP_DUPLICATE_LIB_OK'] = 'True' ## Stops kernal error bug with matpl
 
 # %%
 
-DATASET_PATH = "C:\\Users\\pat_h\\htw_berlin_datasets\\DIST_32x32_1_DATASET"
+DATASET_PATH = "C:\\Users\\pat_h\\htw_berlin_datasets\\DIST_153x115_1_DATASET"
 
 BATCH_SIZE : int = 32
-IMG_HEIGHT : int = 32
-IMG_WIDTH : int = 32
+IMG_HEIGHT : int = 115 # double check height!
+IMG_WIDTH : int = 153 # double check width!
 VAL_SPLIT : int = 0.2
 SEED : int = 123
-EPOCHS : int = 3
+EPOCHS : int = 10
 
 # %%
 
@@ -35,7 +35,7 @@ train_ds, val_ds = tf.keras.utils.image_dataset_from_directory(
     labels='inferred',
     subset='both',
     seed=SEED,
-    image_size=(IMG_HEIGHT, IMG_WIDTH),
+    image_size=(IMG_HEIGHT, IMG_WIDTH), # double check order of height and width!
     batch_size=BATCH_SIZE
 )
 
@@ -115,7 +115,7 @@ print(model.metrics_names)
 ###### save model history to CSV #####
 
 # choose file name and path
-FILE_NAME = "DIST_32x32_1_HIST.csv"
+FILE_NAME = "DIST_153x115_1_HIST.csv"
 FILE_PATH = "C:\\Users\\pat_h\\OneDrive\\Desktop\\public-repos\\NN-Graph-Classifier\\saved_models\\distribution_graph_classifiers"
 
 # create full path
@@ -123,7 +123,7 @@ save_data_path = os.path.join(FILE_PATH, FILE_NAME)
 
 # save model history to CSV
 model_history_df = pd.DataFrame(fitted_model.history)
-print(model_history_df.head())
+print(model_history_df.head(20))
 
 # %%
 
@@ -136,7 +136,7 @@ model_history_df.to_csv(save_data_path)
 ##### save model to .keras file
 
 # choose file name and path
-FILE_NAME = "DIST_32x32_1.keras"
+FILE_NAME = "DIST_153x115_1.keras"
 FILE_PATH = "C:\\Users\\pat_h\\OneDrive\\Desktop\\public-repos\\NN-Graph-Classifier\\saved_models\\distribution_graph_classifiers"
 
 # full save path
