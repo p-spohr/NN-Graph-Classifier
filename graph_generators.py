@@ -256,7 +256,7 @@ def exp_graph_generator(save_path:str, num_graphs=100, save_dpi=72, save_format=
         fig.tight_layout()
 
         # save graph to folder path
-        fig.savefig(os.path.join(save_path, f'norm_{graph}.{save_format}'), dpi=save_dpi)
+        fig.savefig(os.path.join(save_path, f'exp_{graph}.{save_format}'), dpi=save_dpi)
         plt.close(fig) # save memory usage
 
     # calculate runtime
@@ -510,7 +510,7 @@ def lognorm_graph_generator(save_path:str, num_graphs=100, save_dpi=72, save_for
         fig.tight_layout()
 
         # save graph to folder path
-        fig.savefig(os.path.join(save_path, f'norm_{graph}.{save_format}'), dpi=save_dpi)
+        fig.savefig(os.path.join(save_path, f'lognorm_{graph}.{save_format}'), dpi=save_dpi)
         plt.close(fig) # save memory usage
 
     end_time = time.time()
