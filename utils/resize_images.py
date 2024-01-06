@@ -23,29 +23,6 @@ for dirpath, dirnames, filenames in os.walk(work_path):
 
 # %%
 
-##### show 3 x 3 image of graphs #####
-
-# GRAPH_FOLDER = 'unif' 
-# GRAPH_FOLDER = 'unif_32x32'
-GRAPH_FOLDER = 'unif_115x86'
-
-work_path = f'c:\\Users\\pat_h\\htw_berlin_datasets\\dist_datasets\\{GRAPH_FOLDER}'
-
-plt.figure(figsize=(10,10))
-count = 1
-for dirpath, dirnames, filenames in os.walk(work_path):
-    while count < 10:
-        for file in filenames[0:9]:
-            plt.subplot(3, 3, count)
-            im = Image.open(os.path.join(work_path, file))
-            plt.imshow(im)
-            plt.axis('off')
-            plt.title(str(file))
-            count += 1
-
-
-# %%
-
 ##### save all resized images into my 'all_32x32' folder #####
             
 # create model of natural images vs all graphs from my graph_generators.py  
@@ -67,27 +44,6 @@ for dirpath, dirnames, filenames in os.walk(work_path):
 
 end_time = time.time()
 print(f'Total Runtime: {round(end_time - start_time, 3)} seconds') # Total Runtime: 64.904 seconds
-
-# %%
-
-##### ACCIDENTALLY SAVED THE WRONG FILE NAMES SO I NEEDED TO RENAME THEM ######
-# rename all files to their correct distribution
-start_time = time.time()
-
-work_path = 'c:\\Users\\pat_h\\htw_berlin_datasets\\dist_datasets'
-
-# walk through dir
-for dirpath, dirnames, filenames in os.walk(work_path):
-    print(f'PATH BASE: {os.path.basename(dirpath)}')
-
-    # resize images and save to new dir 'resized'
-    for file in filenames:
-        file_number = file.split('_')[1]
-        new_name = f'{os.path.basename(dirpath)}_{file_number}'
-        os.rename(os.path.join(dirpath, file), os.path.join(dirpath, new_name))
-
-end_time = time.time()
-print(f'Total Runtime: {round(end_time - start_time, 3)} seconds') # Total Runtime: 1.496 seconds
 
 # %%
 
