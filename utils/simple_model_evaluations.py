@@ -8,7 +8,7 @@ import os
 
 # %%
 
-saved_evaluations = f"C:\\Users\\pat_h\\OneDrive\\Desktop\\public-repos\\NN-Graph-Classifier\\simple_classifier_evaluations"
+saved_evaluations = f"C:\\Users\\pat_h\\OneDrive\\Desktop\\public-repos\\NN-Graph-Classifier\\classifier_evaluations\\simple_classifiers"
 
 eval_generated_false_count = pd.read_csv(os.path.join(saved_evaluations, f'eval_generated_false_count.csv'), header=0, names=['Dist', 'Count'])
 

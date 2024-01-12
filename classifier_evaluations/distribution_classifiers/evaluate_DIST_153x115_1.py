@@ -14,54 +14,15 @@ os.environ['KMP_DUPLICATE_LIB_OK'] = 'True' ## Stops kernal error bug with matpl
 
 # %%
 
-# images to evalute
-EVAL_IMAGE_FOLDER = 'generated'
 # model to predict
-MODEL_FILE_NAME = "CIFAR_SCP_1.keras"
+MODEL_FILE_NAME = "DIST_153x115_1.keras"
 
-load_file_path = f"C:\\Users\\pat_h\\OneDrive\\Desktop\\public-repos\\NN-Graph-Classifier\\saved_models\\simple_graph_classifiers\\{MODEL_FILE_NAME}"
+load_model_file_path = f"C:\\Users\\pat_h\\OneDrive\\Desktop\\public-repos\\NN-Graph-Classifier\\saved_models\\distribution_graph_classifiers\\{MODEL_FILE_NAME}"
 
-print(load_file_path)
+print(load_model_file_path)
 
-# %%
-
-eval_dataset_path = f"C:\\Users\\pat_h\\htw_berlin_datasets\\CIFAR_GEN_SCP_1_DATASET\\{EVAL_IMAGE_FOLDER}"
-
-eval_image_dataset = []
-
-for dirpath, dirnames, filenames in os.walk(eval_dataset_path):
-    print(dirpath)
-    for file in filenames:
-        with Image.open(os.path.join(dirpath, file)) as im:
-            im_array = keras.utils.img_to_array(im, data_format=None, dtype=None)
-        eval_image_dataset.append((file, im_array))
-
-# %%
-
-print(eval_image_dataset[0])
-
-# %%
-    
-# convert array into tensor and then into tensor dataset
-eval_image_tensors = map(tf.convert_to_tensor, [array for file, array in eval_image_dataset])
-
-# %%
-
-# convert map to list
-eval_image_tensors = list(eval_image_tensors)
-print(len(eval_image_tensors))
-print(tf.get_static_value(eval_image_tensors[0]))
-
-# %%
-
-# covert list of tensors to Dataset
-eval_image_tensors = tf.data.Dataset.from_tensors(eval_image_tensors)
-
-# %%
-
-model_path = f"C:\\Users\\pat_h\\OneDrive\\Desktop\\public-repos\\NN-Graph-Classifier\\saved_models\\simple_graph_classifiers\\{MODEL_FILE_NAME}"
-saved_model = tf.keras.models.load_model(model_path)
-BATCH_SIZE = 20
+saved_model = tf.keras.models.load_model(load_model_file_path)
+BATCH_SIZE = 20 # for prediction later
 
 if saved_model:
     print(f'Model loaded: {MODEL_FILE_NAME}')
@@ -69,24 +30,115 @@ if saved_model:
 
 # %%
 
-# use loaded model to predict image class
-pred_new = saved_model.predict(eval_image_tensors, batch_size=BATCH_SIZE, verbose="auto", steps=None, callbacks=None)
+# fill each key with list of image tensor arrays
+dist_image_dict = {'exp':[], 'lognorm':[], 'norm':[], 'unif':[]}
+
+eval_dataset_path = f"C:\\Users\\pat_h\\htw_berlin_datasets\\DIST_153x115_1_DATASET"
+
+for dirpath, dirnames, filenames in os.walk(eval_dataset_path):
+
+    print(dirpath)
+
+    for file in filenames:
+
+        for dist_type in dist_image_dict.keys():
+
+            if os.path.basename(dirpath) == dist_type:
+                
+                with Image.open(os.path.join(dirpath, file)) as im:
+
+                    im_array = keras.utils.img_to_array(im, data_format=None, dtype=None)
+
+                    # this dictionary will remain with simple array for convert to image later
+                    # im_array = tf.convert_to_tensor(im_array)
+
+                dist_image_dict[dist_type].append((file, im_array))
+
 
 # %%
 
-# display first 20 predictions to confirm if it is working
-pred_new = pd.DataFrame(pred_new, columns=['graph', 'natural'])
-pred_new.head(n=20)
+# convert array into tensor and then into tensor dataset
+
+dist_image_dict_tensors = {}
+
+for key, value in dist_image_dict.items():
+
+    # create separate dictionary only for tensor data
+    dist_image_dict_tensors[key] = []
+
+    for file, array in value:
+
+        tensor_array = tf.convert_to_tensor(array)
+
+        dist_image_dict_tensors[key].append(tensor_array)
+    
+    # convert list of tensor data into TensorDataset
+    dist_image_dict_tensors[key] = tf.data.Dataset.from_tensors(dist_image_dict_tensors[key])
+
+     
+print(dist_image_dict_tensors.keys())
+print(type(dist_image_dict_tensors['exp']))
 
 # %%
 
-pred_new = pred_new.assign(prediction=pred_new.graph > pred_new.natural )
-pred_new.head(n=20)
+##### use loaded model to predict image class #####
+
+pred_dict = {}
+
+for key, value in dist_image_dict_tensors.items():
+   
+    pred_dict[key] = saved_model.predict(value, batch_size=BATCH_SIZE, verbose="auto", steps=None, callbacks=None)
+
+    pred_dict[key] = pd.DataFrame(pred_dict[key], columns=['exp', 'lognorm', 'norm', 'unif']) # direct from model's train_ds.class_names
+
 
 # %%
 
-accuracy_check = pred_new['prediction'].value_counts()
-print(accuracy_check)
+print(pred_dict['exp'].head(n=20))
+print(type(pred_dict['exp']))
+print(pred_dict['exp'].max(axis=1))
+
+# %%
+
+accuracy_check_dict = {}
+
+for key, value in pred_dict.items():
+
+    pred_dict[key] = value.assign(prediction=value.max(axis=1) == value[key])
+
+    accuracy_check_dict[key] = pred_dict[key].prediction.value_counts()
+
+
+# %%
+    
+print(pred_dict['unif'].head(n=10))
+
+# %%
+
+false_pred = 0 
+false_count = []
+
+for key, value in accuracy_check_dict.items():
+    print(f'--------{key}--------')
+    false_pred += value.loc[False]
+    false_count.append(value.loc[False])
+    value.loc['Accuracy'] = value.loc[True] / (value.loc[True] + value.loc[False]) 
+    print(value.head())
+    
+
+
+print(false_pred)
+print(false_count)
+# %%
+
+print(list(accuracy_check_dict.keys()))
+
+# %%
+
+false_count_df = pd.DataFrame(np.atleast_2d(false_count), columns=list(accuracy_check_dict.keys()))
+false_count_df.head()
+false_count_df.to_csv('eval_distribution_false_count.csv')
+
 
 # %%
 
