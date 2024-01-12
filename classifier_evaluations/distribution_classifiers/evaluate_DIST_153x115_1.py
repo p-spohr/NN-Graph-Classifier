@@ -9,6 +9,9 @@ import pandas as pd
 from tensorflow import image
 from tensorflow import keras
 
+import random
+random.seed(123)
+
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'True' ## Stops kernal error bug with matplotlib and tensorflow
 
 
@@ -111,7 +114,7 @@ for key, value in pred_dict.items():
 
 # %%
     
-print(pred_dict['unif'].head(n=10))
+print(pred_dict['exp'].head(n=10))
 
 # %%
 
@@ -142,76 +145,152 @@ false_count_df.to_csv('eval_distribution_false_count.csv')
 
 # %%
 
-accuracy_check_df = pd.DataFrame(accuracy_check)
-accuracy_check_df.head()
-accuracy_check_df.to_csv(f'{EVAL_IMAGE_FOLDER}_in_{MODEL_FILE_NAME}_predictions.csv')
+##### create a list where the file name and prediction are in a tuple #####
 
-# %%
-
-print(f'Accuracy: {100 * accuracy_check[True]/(accuracy_check[True] + accuracy_check[False])} %') 
-
-# %%
+print(pred_dict['exp'].head())
 
 
 # %%
 
-# create new tuple list so I can sort and save the files easier
-eval_image_pred = list(zip([file for file, array in eval_image_dataset], [array for file, array in eval_image_dataset], pred_new['prediction']))
-print(type(eval_image_pred))
-
-# %%
-
-print(len(eval_image_pred[0]))
-
-# %%
-
-for file, image, prediction in eval_image_pred:
-    print(file)
-    print(image.shape)
-    print(prediction)
-    break
+dist_image_dict['exp'][0]
 
 
 # %%
 
-save_path = "C:\\Users\\pat_h\\OneDrive\\Desktop\\public-repos\\NN-Graph-Classifier\\false_images\\generated"
 
-for file, image, prediction in eval_image_pred:
-    if prediction == False:
-        with keras.utils.array_to_img(image) as im_false:
-            im_false.save(os.path.join(save_path, file))
-
-
-# %%
-
-##### count the instances of falsely labeled graphs #####
-DATASET = 'generated'
-count_false_file_path = f"C:\\Users\\pat_h\\OneDrive\\Desktop\\public-repos\\NN-Graph-Classifier\\false_images\\{DATASET}"
-
-dist_types_dict = {'exp':0, 'lognorm':0, 'norm':0, 'unif':0}
-
-for dirpath, dirnames, filenames in os.walk(count_false_file_path):
+for key_1, tup in dist_image_dict.items():
     
-    print(dirpath)
+    file_name_list = [file_name for file_name, image_array in tup]
 
-    for file in filenames:
+    file_name_df = pd.DataFrame(file_name_list, columns=['file_name'])
+   
+    for key_2, df in pred_dict.items():
 
-        split_file = file.split('_')
+        if key_1 == key_2:
 
-        for key, value in dist_types_dict.items():
-
-            if split_file[0] == key:
-
-                dist_types_dict[key] += 1
-
-
-for key, value in dist_types_dict.items():
-    print(f'{key}: {value}')
+            pred_dict[key_2] = df.merge(file_name_df, how='inner', left_index=True, right_index=True)
 
 # %%
 
-new_df = pd.DataFrame.from_dict(dist_types_dict, orient='index', columns=['Count'])
-new_df.head()
-new_df.to_csv(f'eval_{DATASET}_false_count.csv')
+for key, df in pred_dict.items():
 
+    print(pred_dict[key].head(n=5))
+
+
+# %%
+
+for key, df in pred_dict.items():
+    
+    df.to_csv(f'{key}_predictions_DIST_153x115_1.csv')
+
+                
+# %%
+
+evaluate_file_pred_array_dict = {}
+
+for key_1, tup in dist_image_dict.items():
+    
+    file_name_list = [file_name for file_name, image_array in tup]
+    image_array_list = [image_array for file_name, image_array in tup]
+
+    for key_2, df in pred_dict.items():
+
+        pred_list = df.prediction
+
+        if key_1 == key_2:
+
+            evaluate_file_pred_array_dict[key_1] = list(zip(file_name_list, pred_list, image_array_list))
+
+
+# %%
+
+save_path = "C:\\Users\\pat_h\\OneDrive\\Desktop\\public-repos\\NN-Graph-Classifier\\false_images\\DIST_153x115"
+
+for key, tup in evaluate_file_pred_array_dict.items():
+
+    for file, pred, image in tup:
+        
+        dist_type = file.split('_')[0]
+        
+        if pred == False:
+            with keras.utils.array_to_img(image) as im_false:
+                im_false.save(os.path.join(save_path, dist_type, file))
+
+
+# %%
+
+for cols, series in pred_dict['exp'].items():
+    print(cols)
+
+# %%
+
+test_dict = {}
+
+for key, df in pred_dict.items():
+    
+    test_dict[key] = df.assign(max=df[list(pred_dict.keys())].max(axis=1))
+
+# %%
+
+test_dict['exp'].head()
+
+# %%
+
+test_slice_dict = test_dict
+
+for key, df in test_slice_dict.items():
+
+    test_slice_dict[key] = df.assign(label='label')
+
+test_slice = test_slice_dict['exp'].iloc[0]
+
+print(type(test_slice))
+print(test_slice)
+print(test_slice.loc['max'])
+
+print(test_slice_dict['exp']['label'].iloc[0])
+
+test_slice_dict['exp'].loc[0,'label'] = 'banger'
+
+print(test_slice_dict['exp'].loc[0, 'label'])
+
+print(test_slice_dict['exp'].loc['label'])
+
+
+# %%
+
+test_slice_dict['exp'].head()
+
+
+# %%
+
+#### I GOT IT TO WORK OH LORDY THANK YOU #####
+for key_1, df in test_dict.items():
+    
+    for i in range(len(df)):
+
+        slice = df.iloc[i]
+
+        for key_2 in test_dict.keys():
+
+            if slice.loc['max'] == slice.loc[key_2]:
+                
+                test_slice_dict[key_1].loc[i, 'label'] = key_2
+        
+
+          
+test_slice_dict['exp'].head(n=20)
+
+
+# %%
+
+test_slice_dict['exp']['label'].head(n=20)
+
+# %%
+
+test_dict['exp'].iloc[0] = test_dict['exp'].iloc[4]
+
+# %%
+
+test_dict['exp'].iloc[0]
 # %%
