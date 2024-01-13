@@ -122,7 +122,7 @@ for file, image, prediction in eval_image_pred:
 
 # %%
 
-save_path = "C:\\Users\\pat_h\\OneDrive\\Desktop\\public-repos\\NN-Graph-Classifier\\false_images\\generated"
+save_path = "C:\\Users\\pat_h\\OneDrive\\Desktop\\public-repos\\NN-Graph-Classifier\\missclass_images\\generated"
 
 for file, image, prediction in eval_image_pred:
     if prediction == False:
@@ -134,7 +134,7 @@ for file, image, prediction in eval_image_pred:
 
 ##### count the instances of falsely labeled graphs #####
 DATASET = 'generated'
-count_false_file_path = f"C:\\Users\\pat_h\\OneDrive\\Desktop\\public-repos\\NN-Graph-Classifier\\false_images\\{DATASET}"
+count_false_file_path = f"C:\\Users\\pat_h\\OneDrive\\Desktop\\public-repos\\NN-Graph-Classifier\\missclass_images\\{DATASET}"
 
 dist_types_dict = {'exp':0, 'lognorm':0, 'norm':0, 'unif':0}
 

@@ -1,3 +1,5 @@
 # NN-Graph-Classifier
 
-Classify images as graphs.
+WORK IN PROGRESS
+
+classify images as graphs.

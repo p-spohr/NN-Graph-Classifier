@@ -17,6 +17,8 @@ os.environ['KMP_DUPLICATE_LIB_OK'] = 'True' ## Stops kernal error bug with matpl
 
 # %%
 
+##### Load model to predict image class #####
+
 # model to predict
 MODEL_FILE_NAME = "DIST_153x115_1.keras"
 
@@ -33,7 +35,8 @@ if saved_model:
 
 # %%
 
-# fill each key with list of image tensor arrays
+##### fill each key with list of file name image tensor array tuples #####
+    
 dist_image_dict = {'exp':[], 'lognorm':[], 'norm':[], 'unif':[]}
 
 eval_dataset_path = f"C:\\Users\\pat_h\\htw_berlin_datasets\\DIST_153x115_1_DATASET"
@@ -60,7 +63,7 @@ for dirpath, dirnames, filenames in os.walk(eval_dataset_path):
 
 # %%
 
-# convert array into tensor and then into tensor dataset
+##### convert array into tensor and then into tensor dataset #####
 
 dist_image_dict_tensors = {}
 
@@ -78,9 +81,6 @@ for key, value in dist_image_dict.items():
     # convert list of tensor data into TensorDataset
     dist_image_dict_tensors[key] = tf.data.Dataset.from_tensors(dist_image_dict_tensors[key])
 
-     
-print(dist_image_dict_tensors.keys())
-print(type(dist_image_dict_tensors['exp']))
 
 # %%
 
@@ -97,26 +97,24 @@ for key, value in dist_image_dict_tensors.items():
 
 # %%
 
-print(pred_dict['exp'].head(n=20))
-print(type(pred_dict['exp']))
-print(pred_dict['exp'].max(axis=1))
-
-# %%
+##### create dictionary with accuracy and create new max columun in pred_dict #####
 
 accuracy_check_dict = {}
 
-for key, value in pred_dict.items():
+for key, df in pred_dict.items():
 
-    pred_dict[key] = value.assign(prediction=value.max(axis=1) == value[key])
+    # add prediction True or False in each key (distribution type)
+    pred_dict[key] = df.assign(prediction=df[list(pred_dict.keys())].max(axis=1) == df[key])
+
+    # add max column between each prediction
+    pred_dict[key] = df.assign(max=df[list(pred_dict.keys())].max(axis=1))
 
     accuracy_check_dict[key] = pred_dict[key].prediction.value_counts()
 
 
 # %%
-    
-print(pred_dict['exp'].head(n=10))
 
-# %%
+##### display and then save number of misclassfications per distribution #####
 
 false_pred = 0 
 false_count = []
@@ -126,18 +124,8 @@ for key, value in accuracy_check_dict.items():
     false_pred += value.loc[False]
     false_count.append(value.loc[False])
     value.loc['Accuracy'] = value.loc[True] / (value.loc[True] + value.loc[False]) 
-    print(value.head())
+    print(value.head(n=5))
     
-
-
-print(false_pred)
-print(false_count)
-# %%
-
-print(list(accuracy_check_dict.keys()))
-
-# %%
-
 false_count_df = pd.DataFrame(np.atleast_2d(false_count), columns=list(accuracy_check_dict.keys()))
 false_count_df.head()
 false_count_df.to_csv('eval_distribution_false_count.csv')
@@ -145,18 +133,7 @@ false_count_df.to_csv('eval_distribution_false_count.csv')
 
 # %%
 
-##### create a list where the file name and prediction are in a tuple #####
-
-print(pred_dict['exp'].head())
-
-
-# %%
-
-dist_image_dict['exp'][0]
-
-
-# %%
-
+##### merge the file name into the prediction dictionary #####
 
 for key_1, tup in dist_image_dict.items():
     
@@ -170,22 +147,15 @@ for key_1, tup in dist_image_dict.items():
 
             pred_dict[key_2] = df.merge(file_name_df, how='inner', left_index=True, right_index=True)
 
-# %%
-
 for key, df in pred_dict.items():
 
     print(pred_dict[key].head(n=5))
 
-
+             
 # %%
 
-for key, df in pred_dict.items():
+##### create new dictionary with file names, predictions, and image arrays #####
     
-    df.to_csv(f'{key}_predictions_DIST_153x115_1.csv')
-
-                
-# %%
-
 evaluate_file_pred_array_dict = {}
 
 for key_1, tup in dist_image_dict.items():
@@ -204,7 +174,9 @@ for key_1, tup in dist_image_dict.items():
 
 # %%
 
-save_path = "C:\\Users\\pat_h\\OneDrive\\Desktop\\public-repos\\NN-Graph-Classifier\\false_images\\DIST_153x115"
+##### save the misclassified images to their respective folder #####
+            
+save_path = "C:\\Users\\pat_h\\OneDrive\\Desktop\\public-repos\\NN-Graph-Classifier\\missclass_images\\DIST_153x115"
 
 for key, tup in evaluate_file_pred_array_dict.items():
 
@@ -218,79 +190,34 @@ for key, tup in evaluate_file_pred_array_dict.items():
 
 
 # %%
+                
+##### add the predicted label to label column #####
+                
+for key_1, df in pred_dict.items():
+    
+    # create new column for label
+    pred_dict[key_1] = df.assign(label='dist')
 
-for cols, series in pred_dict['exp'].items():
-    print(cols)
+    # run once for entire df in key
+    for i in range(len(df)):
+
+        # get slice of df at row i
+        slice = df.iloc[i]
+
+        # for every slice of df (row) go through each distribution type
+        for key_2 in pred_dict.keys():
+
+            # if the max of the row is equal to the num in exp, lognorm, norm, or unif row then set label to corresponding distribution
+            if slice.loc['max'] == slice.loc[key_2]:
+                
+                # use df.loc[] for insertions into df
+                pred_dict[key_1].loc[i, 'label'] = key_2
+        
+
 
 # %%
-
-test_dict = {}
 
 for key, df in pred_dict.items():
     
-    test_dict[key] = df.assign(max=df[list(pred_dict.keys())].max(axis=1))
-
-# %%
-
-test_dict['exp'].head()
-
-# %%
-
-test_slice_dict = test_dict
-
-for key, df in test_slice_dict.items():
-
-    test_slice_dict[key] = df.assign(label='label')
-
-test_slice = test_slice_dict['exp'].iloc[0]
-
-print(type(test_slice))
-print(test_slice)
-print(test_slice.loc['max'])
-
-print(test_slice_dict['exp']['label'].iloc[0])
-
-test_slice_dict['exp'].loc[0,'label'] = 'banger'
-
-print(test_slice_dict['exp'].loc[0, 'label'])
-
-print(test_slice_dict['exp'].loc['label'])
-
-
-# %%
-
-test_slice_dict['exp'].head()
-
-
-# %%
-
-#### I GOT IT TO WORK OH LORDY THANK YOU #####
-for key_1, df in test_dict.items():
-    
-    for i in range(len(df)):
-
-        slice = df.iloc[i]
-
-        for key_2 in test_dict.keys():
-
-            if slice.loc['max'] == slice.loc[key_2]:
-                
-                test_slice_dict[key_1].loc[i, 'label'] = key_2
-        
-
-          
-test_slice_dict['exp'].head(n=20)
-
-
-# %%
-
-test_slice_dict['exp']['label'].head(n=20)
-
-# %%
-
-test_dict['exp'].iloc[0] = test_dict['exp'].iloc[4]
-
-# %%
-
-test_dict['exp'].iloc[0]
+    df.to_csv(f'{key}_predictions_DIST_153x115_1.csv')
 # %%
