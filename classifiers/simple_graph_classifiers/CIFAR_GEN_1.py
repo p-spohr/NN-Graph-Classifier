@@ -35,6 +35,7 @@ EPOCHS : int = 3
 
 # %%
 
+# get training dataset and validation dataset from directory path
 train_ds, val_ds = tf.keras.utils.image_dataset_from_directory(
     DATASET_PATH,
     validation_split=VAL_SPLIT,
