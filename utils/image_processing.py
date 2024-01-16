@@ -7,21 +7,22 @@ from PIL import Image
 
 # prepare the path for the first batch of pictures
 cwd = os.getcwd()
-batch_path = os.path.join(cwd + '\\cifar-10-batches\\data_batch_1')
+batch_path = "C://Users//pat_h//htw_berlin_datasets//cifar-10_batches"
 print(batch_path)
 
 
 # %%
 
 # download the first batch of pictures into a dictionary
-file = batch_path
+file = os.path.join(batch_path, "data_batch_1")
 with open(file, 'rb') as fo:
     dict = pickle.load(fo, encoding='bytes')
 
 # %%
 print(dict.keys())
-print(f"Images Size in Batch 1: {len(dict[b'data'])}")
-print(f"Images: {dict[b'data'][0:10]}", print(f"Images: {dict[b'filenames'][0:10]}"))
+print(f"Image Count Batch 1: {len(dict[b'data'])}")
+print(f"Images: {dict[b'data'][0:10]}")
+print(f"Images: {dict[b'filenames'][0:10]}")
 
 # for image, file in dict[b'data'][0:10], dict[b'filenames'][0:10]:
 #     print(image, file)
@@ -37,6 +38,8 @@ print(type(images_and_files))
 
 for image, file in images_and_files:
     print(image, file)
+    print(image.shape)
+    break
 
 # %%
 

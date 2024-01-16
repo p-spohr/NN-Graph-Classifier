@@ -95,3 +95,49 @@ end_time = time.time()
 print(f'Total Runtime: {round(end_time - start_time, 3)} seconds') # Total Runtime: 26.273 seconds
                 
 # %%
+
+##### check folder and file names #####
+
+work_path = 'c:\\Users\\pat_h\\htw_berlin_datasets\\dist_datasets'
+
+for dirpath, dirnames, filenames in os.walk(work_path):
+    print('Top Folder: ' + os.path.basename(dirpath))
+    for name in dirnames:
+        print('\t' + 'Sub Folder: ' + name)
+    for file in filenames[0:4]:
+        print('\t' + 'File: ' + file + '\t' + str(os.path.getsize(os.path.join(dirpath, file))/1000) + ' KB')
+
+# %%
+
+##### save all resized images into folder for test evaluation #####
+            
+# create model of natural images vs all graphs from my graph_generators.py  
+
+work_path = 'c:\\Users\\pat_h\\htw_berlin_datasets\\test_eval_datasets'
+
+for dirpath, dirnames, filenames in os.walk(work_path):
+    print('Top Folder: ' + os.path.basename(dirpath))
+    for name in dirnames:
+        print('\t' + 'Sub Folder: ' + name)
+    for file in filenames[0:4]:
+        print('\t' + 'File: ' + file + '\t' + str(os.path.getsize(os.path.join(dirpath, file))/1000) + ' KB')
+
+# %%
+
+# walk through dir
+start_time = time.time()
+
+for dirpath, dirnames, filenames in os.walk(os.path.join(work_path, 'all')):
+    print(f'PATH BASE: {os.path.basename(dirpath)}')
+
+    # resize images and save to new dir 'resized'
+    for file in filenames:
+        with Image.open(os.path.join(dirpath, file)) as im:
+            im = im.convert('RGB')
+            im = im.resize(size=(153,115), resample=Image.Resampling.LANCZOS)
+            file = file.split('.')[0]
+            im.save(os.path.join(work_path, 'all_153x115', f'{file}.jpeg'))
+
+end_time = time.time()
+print(f'Total Runtime: {round(end_time - start_time, 3)} seconds') # Total Runtime: 2.648 seconds
+# %%
