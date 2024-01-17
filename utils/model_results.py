@@ -21,17 +21,20 @@ os.environ['KMP_DUPLICATE_LIB_OK'] = 'True' ## Stops kernal error bug with matpl
 # input correct folder and file name
 
 # dimensions
-# GRAPH_DIM = '32x32'
+GRAPH_DIM = '32x32'
 # GRAPH_DIM = '115x86'
-GRAPH_DIM = '153x115'
+# GRAPH_DIM = '153x115'
+
+MODEL = 2
 
 # SIMPLE_MODEL_FOLDER = "simple_graph_classifiers"
 DIST_MODEL_FOLDER = "distribution_graph_classifiers"
 # SIMPLE_HIST_FILE = "CIFAR_GEN_SCP_1_HIST.csv"
-dist_hist_file = f"DIST_{GRAPH_DIM}_1_HIST.csv"
+dist_hist_file = f"DIST_{GRAPH_DIM}_{MODEL}_HIST.csv"
 # GRAPH_TITLE = 'Natural Images, Generated Graphs, and Scraped Graphs'
-GRAPH_TITLE = f'Distribution Graphs {GRAPH_DIM} (norm, lognorm, exp, unif)'
+GRAPH_TITLE = f'Distribution Graphs {GRAPH_DIM} Model {MODEL} (norm, lognorm, exp, unif)'
 
+print(dist_hist_file)
 
 # file_name = f"{SIMPLE_HIST_FILE.split('.')[0]}_RESULTS"
 # hist_path = f"C:\\Users\\pat_h\\OneDrive\\Desktop\\public-repos\\NN-Graph-Classifier\\saved_models\\{SIMPLE_MODEL_FOLDER}\\{SIMPLE_HIST_FILE}"
@@ -39,12 +42,12 @@ GRAPH_TITLE = f'Distribution Graphs {GRAPH_DIM} (norm, lognorm, exp, unif)'
 
 file_name = f"{dist_hist_file.split('.')[0]}_RESULTS"
 hist_path = f"C:\\Users\\pat_h\\OneDrive\\Desktop\\public-repos\\NN-Graph-Classifier\\saved_models\\{DIST_MODEL_FOLDER}\\{dist_hist_file}"
-save_path = f"C:\\Users\\pat_h\\OneDrive\\Desktop\\public-repos\\NN-Graph-Classifier\\presentation\\images\\results\\{file_name}"
 
+save_path = f"C:\\Users\\pat_h\\OneDrive\\Desktop\\public-repos\\NN-Graph-Classifier\\presentation\\images\\results\\{file_name}"
 
 model_history = pd.read_csv(hist_path, index_col=0)
 
-print(model_history.head(10))
+print(model_history.head(20))
 
 # %%
 

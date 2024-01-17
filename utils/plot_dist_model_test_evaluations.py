@@ -28,3 +28,12 @@ fig.savefig('Count of Misclassified Graphs in DIST_153x115_1')
 
 
 # %%
+
+
+eval_generated_false_count.loc[(eval_generated_false_count['actual']=='norm') & (eval_generated_false_count['prediction']==True)]
+
+# %%
+
+eval_generated_false_count.loc[(eval_generated_false_count['actual']=='lognorm') & (eval_generated_false_count['prediction']==False)]
+
+# %%
