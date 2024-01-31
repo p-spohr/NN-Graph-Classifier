@@ -1,5 +1,3 @@
 # NN-Graph-Classifier
 
-WORK IN PROGRESS
-
-classify images as graphs.
+Classify graphs with different probability distributions.
