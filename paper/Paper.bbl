@@ -1,0 +1,165 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global}
+    \entry{data-basecamp}{online}{}
+      \name{author}{1}{}{%
+        {{hash=b90e41b68c43215491fd3a8dc478cfdb}{%
+           family={Basecamp},
+           familyi={B\bibinitperiod},
+           given={Data},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{b90e41b68c43215491fd3a8dc478cfdb}
+      \strng{fullhash}{b90e41b68c43215491fd3a8dc478cfdb}
+      \strng{bibnamehash}{b90e41b68c43215491fd3a8dc478cfdb}
+      \strng{authorbibnamehash}{b90e41b68c43215491fd3a8dc478cfdb}
+      \strng{authornamehash}{b90e41b68c43215491fd3a8dc478cfdb}
+      \strng{authorfullhash}{b90e41b68c43215491fd3a8dc478cfdb}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{month}{5}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://databasecamp.de/en/ml/softmax-function
+      \endverb
+      \verb{url}
+      \verb https://databasecamp.de/en/ml/softmax-function
+      \endverb
+    \endentry
+    \entry{bishop1995}{article}{}
+      \name{author}{1}{}{%
+        {{hash=9dfd0135a5e80aa6d81cea2c10fb7f73}{%
+           family={Bishop},
+           familyi={B\bibinitperiod},
+           given={Christopher\bibnamedelima M.},
+           giveni={C\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Aston Universtiy Birmingham UK}%
+      }
+      \list{location}{1}{%
+        {Oxford, United Kingdom}%
+      }
+      \list{publisher}{1}{%
+        {Clarendon Press}%
+      }
+      \strng{namehash}{9dfd0135a5e80aa6d81cea2c10fb7f73}
+      \strng{fullhash}{9dfd0135a5e80aa6d81cea2c10fb7f73}
+      \strng{bibnamehash}{9dfd0135a5e80aa6d81cea2c10fb7f73}
+      \strng{authorbibnamehash}{9dfd0135a5e80aa6d81cea2c10fb7f73}
+      \strng{authornamehash}{9dfd0135a5e80aa6d81cea2c10fb7f73}
+      \strng{authorfullhash}{9dfd0135a5e80aa6d81cea2c10fb7f73}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Neural Networks for Pattern Recognition}
+      \field{year}{1995}
+      \verb{urlraw}
+      \verb https://people.sabanciuniv.edu/berrin/cs512/lectures/Book-Bishop-Neural%20Networks%20for%20Pattern%20Recognition.pdf
+      \endverb
+      \verb{url}
+      \verb https://people.sabanciuniv.edu/berrin/cs512/lectures/Book-Bishop-Neural%20Networks%20for%20Pattern%20Recognition.pdf
+      \endverb
+    \endentry
+    \entry{yan2016}{online}{}
+      \name{author}{1}{}{%
+        {{hash=9979e7c606c1876cb09cf32b78628d71}{%
+           family={Yan},
+           familyi={Y\bibinitperiod},
+           given={Shi},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ML Review}%
+      }
+      \strng{namehash}{9979e7c606c1876cb09cf32b78628d71}
+      \strng{fullhash}{9979e7c606c1876cb09cf32b78628d71}
+      \strng{bibnamehash}{9979e7c606c1876cb09cf32b78628d71}
+      \strng{authorbibnamehash}{9979e7c606c1876cb09cf32b78628d71}
+      \strng{authornamehash}{9979e7c606c1876cb09cf32b78628d71}
+      \strng{authorfullhash}{9979e7c606c1876cb09cf32b78628d71}
+      \field{sortinit}{Y}
+      \field{sortinithash}{fd67ad5a9ef0f7456bdd9aab10fe1495}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{3}
+      \field{title}{Understanding LSTM and its diagrams}
+      \field{year}{2016}
+      \verb{urlraw}
+      \verb https://blog.mlreview.com/understanding-lstm-and-its-diagrams-37e2f46f1714
+      \endverb
+      \verb{url}
+      \verb https://blog.mlreview.com/understanding-lstm-and-its-diagrams-37e2f46f1714
+      \endverb
+    \endentry
+    \entry{zhang2020}{article}{}
+      \name{author}{3}{}{%
+        {{hash=75c37fe503cc9c3ef8ab9d2e2bd1e578}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Zihao},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=7bcfc3a5e6df217d673644bbe887698e}{%
+           family={Zohren},
+           familyi={Z\bibinitperiod},
+           given={Stefan},
+           giveni={S\bibinitperiod}}}%
+        {{hash=05bb95ccbf018512823b22dffd9503bb}{%
+           family={Roberts},
+           familyi={R\bibinitperiod},
+           given={Stephen},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {With Intelligence LLC}%
+      }
+      \strng{namehash}{d67b2990eddb878331d1e4ce9678373f}
+      \strng{fullhash}{d67b2990eddb878331d1e4ce9678373f}
+      \strng{bibnamehash}{d67b2990eddb878331d1e4ce9678373f}
+      \strng{authorbibnamehash}{d67b2990eddb878331d1e4ce9678373f}
+      \strng{authornamehash}{d67b2990eddb878331d1e4ce9678373f}
+      \strng{authorfullhash}{d67b2990eddb878331d1e4ce9678373f}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2640-3943}
+      \field{journaltitle}{The Journal of Financial Data Science}
+      \field{month}{8}
+      \field{number}{4}
+      \field{title}{Deep Learning for Portfolio Optimization}
+      \field{volume}{2}
+      \field{year}{2020}
+      \field{pages}{8\bibrangedash 20}
+      \range{pages}{13}
+      \verb{urlraw}
+      \verb https://arxiv.org/pdf/2005.13665v3.pdf
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/pdf/2005.13665v3.pdf
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
