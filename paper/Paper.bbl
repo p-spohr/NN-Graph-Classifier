@@ -338,6 +338,35 @@
       \verb https://cs231n.github.io/convolutional-networks/
       \endverb
     \endentry
+    \entry{gomez2018}{online}{}
+      \name{author}{1}{}{%
+        {{hash=df68361ed0c774dfdaac44f6e3b1f629}{%
+           family={Gómez},
+           familyi={G\bibinitperiod},
+           given={Raúl},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{df68361ed0c774dfdaac44f6e3b1f629}
+      \strng{fullhash}{df68361ed0c774dfdaac44f6e3b1f629}
+      \strng{bibnamehash}{df68361ed0c774dfdaac44f6e3b1f629}
+      \strng{authorbibnamehash}{df68361ed0c774dfdaac44f6e3b1f629}
+      \strng{authornamehash}{df68361ed0c774dfdaac44f6e3b1f629}
+      \strng{authorfullhash}{df68361ed0c774dfdaac44f6e3b1f629}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Raúl Gómez blog}
+      \field{month}{3}
+      \field{title}{Understanding Categorical Cross-Entropy Loss, Binary Cross-Entropy Loss, Softmax Loss, Logistic Loss, Focal Loss and all those confusing names}
+      \field{year}{2018}
+      \verb{urlraw}
+      \verb https://gombru.github.io/2018/05/23/cross_entropy_loss/
+      \endverb
+      \verb{url}
+      \verb https://gombru.github.io/2018/05/23/cross_entropy_loss/
+      \endverb
+    \endentry
     \entry{harris2020-numpy}{article}{}
       \name{author}{26}{}{%
         {{hash=db2b4761cc46be347b418e68660c9554}{%
@@ -650,6 +679,41 @@
       \verb https://www.cs.toronto.edu/~kriz/cifar.html
       \endverb
     \endentry
+    \entry{kumar2021}{online}{}
+      \name{author}{2}{}{%
+        {{hash=8aacd22e59b538e218d84bc9cb96c13f}{%
+           family={Kumar},
+           familyi={K\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod}}}%
+        {{hash=90ad47047b86088ecb3818aba15aaaa1}{%
+           family={Codicals},
+           familyi={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Geek Culture}%
+      }
+      \strng{namehash}{20525e553a89ef3cb38bdbfb514f6483}
+      \strng{fullhash}{20525e553a89ef3cb38bdbfb514f6483}
+      \strng{bibnamehash}{20525e553a89ef3cb38bdbfb514f6483}
+      \strng{authorbibnamehash}{20525e553a89ef3cb38bdbfb514f6483}
+      \strng{authornamehash}{20525e553a89ef3cb38bdbfb514f6483}
+      \strng{authorfullhash}{20525e553a89ef3cb38bdbfb514f6483}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Medium}
+      \field{month}{8}
+      \field{title}{Max Pooling, Why use it and its advantages}
+      \field{year}{2021}
+      \verb{urlraw}
+      \verb https://medium.com/geekculture/max-pooling-why-use-it-and-its-advantages-5807a0190459
+      \endverb
+      \verb{url}
+      \verb https://medium.com/geekculture/max-pooling-why-use-it-and-its-advantages-5807a0190459
+      \endverb
+    \endentry
     \entry{mckinney2010-pandas}{inproceedings}{}
       \name{author}{1}{}{%
         {{hash=27ca77940a5e8c07c5d89d0f3fb11d75}{%
@@ -741,6 +805,32 @@
       \verb https://www.giskard.ai/glossary/rectified-linear-unit-relu
       \endverb
     \endentry
+    \entry{sunedition2021}{online}{}
+      \name{author}{1}{}{%
+        {{hash=97ffe37f687352064ebd7e8173167308}{%
+           family={SunEdition},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{97ffe37f687352064ebd7e8173167308}
+      \strng{fullhash}{97ffe37f687352064ebd7e8173167308}
+      \strng{bibnamehash}{97ffe37f687352064ebd7e8173167308}
+      \strng{authorbibnamehash}{97ffe37f687352064ebd7e8173167308}
+      \strng{authornamehash}{97ffe37f687352064ebd7e8173167308}
+      \strng{authorfullhash}{97ffe37f687352064ebd7e8173167308}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Kaggle}
+      \field{title}{Graphs Dataset}
+      \field{year}{2021}
+      \verb{urlraw}
+      \verb https://www.kaggle.com/datasets/sunedition/graphs-dataset
+      \endverb
+      \verb{url}
+      \verb https://www.kaggle.com/datasets/sunedition/graphs-dataset
+      \endverb
+    \endentry
     \entry{reback2020-pandas}{software}{}
       \name{author}{1}{}{%
         {{hash=9a1f9219d00cef023c61c6fd71576d04}{%
@@ -806,9 +896,6 @@
       \endverb
     \endentry
   \enddatalist
-  \missing{data-basecamp}
-  \missing{sunedition2021}
-  \missing{yan2016}
   \missing{zhang2020}
 \endrefsection
 \endinput

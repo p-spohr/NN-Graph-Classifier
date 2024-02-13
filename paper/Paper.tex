@@ -217,8 +217,20 @@ defernumbers=false
             Also, the 10 classes have been combined into one natural image class. 
             I have only selected 10,000 because there are only 7,753 suitable graphs in the scraped graph dataset. 
             Had I selected more that would have led to an imbalanced dataset in the model. 
-            In my project, the CIFAR-10 dataset will be labeled as CIFAR or natural.
+            In my project, the CIFAR-10 dataset will be labeled as CIFAR or natural. See Figure \ref{cifar-overview} for examples.
+
+            \begin{figure}[ht]
+            
+                \begin{center}
+
+                    \includegraphics[scale=0.6]{natural_overview.png}
+                    \caption{CIFAR-10 Natural Images (CIFAR) \cite{krizhevsky2009}}
+                    \label{cifar-overview}
         
+                \end{center}
+                
+            \end{figure}
+
             
         \subsection{Scraped Graphs}
     
@@ -233,31 +245,22 @@ defernumbers=false
             he images came in various dimensions and were resized to the natural images 32x32 and converted to JPG format. 
             I’ll note here that JPG was chosen because it only has 3 color channels and no alpha channel. 
             If PNG is used then it could have a shape of (32,32,4) which adds unnecessary parameters for the scope of my objectives.
-        
-            \begin{table}[htp]
+            See Figure \ref{scraped-overview} for examples.
+            
+
+            \begin{figure}[ht]
+            
                 \begin{center}
-                    
-                    \begin{tabular}{ | l | l | l | l | l | }
 
-                        \hline
-                        \textbf{Ticker}      & \textbf{Name}                             & \textbf{Geschäft} \\
-                        \hline
-                        COHR                 & Coherent, Inc.                            & Laser \\
-                        CTB                  & Cooper Tire \& Rubber Company             & Reifen \\
-                        EQT                  & EQT Corporation                           & Energie \\
-                        GOLD                 & Barrick Gold Corporation                  & Bergarbeit \\
-                        NSEC                 & National Security Group, Inc.             & Versicherung \\
-                        OTTR                 & Otter Tail Corporation                    & Energie \\
-                        PEP                  & PepsiCo, Inc.                             & Getränke \\
-                        SKYW                 & SkyWest, Inc.                             & Fluglinie \\
-                        SNFCA                & Security National Financial Corporation   & Lebensversicherung \\
-                        WY                   & Weyerhaeuser Company                      & Abholzung \\
-                        \hline
-
-                    \end{tabular}
-
+                    \includegraphics[scale=0.6]{scraped_overview_original.png}
+                    \caption{Scraped Graphs (SCP) \cite{sunedition2021}}
+                    \label{scraped-overview}
+        
                 \end{center}
-            \end{table}
+                
+            \end{figure}
+
+            
 
         \subsection{Generated Graphs}
         
@@ -293,15 +296,52 @@ defernumbers=false
             They were not ‘duds’ like previously mentioned -- they looked typical, but because of the density functions’ parameters, 
             they were similar in appearance to a point where it would become a 50-50 decision if I had to classify them myself. 
             The cases when this happened are a minority, but it was important to keep this in mind as I evaluated the models later.
+            See Figure \ref{generated-overview} for examples. The density functions that created the random variables in the graph
+            are listed below.
             
-            Normal Distribution Density Function
+            \begin{figure}[ht]
             
-            Log-Normal Distribution Density Function
-            
-            Exponential Distribution Density Function
-            
-            Uniform Distribution Density Function
+                \begin{center}
+
+                    \includegraphics[scale=0.6]{norm_460x345_overview.png}
+                    \caption{Generated Graphs (GEN)}
+                    \label{generated-overview}
         
+                \end{center}
+                
+            \end{figure}
+
+            \textbf{Normal Distribution Density Function  $ X \sim \mathcal{N}(\mu^2, \sigma)  $}
+               
+            \begin{Large} 
+
+                \[ f_X(x) = \frac{1}{\sqrt{2\pi \sigma^2}} exp\left[{-\frac{(x - \mu)^2}{2 \sigma^2}}\right] \] 
+
+            \end{Large}
+
+            \textbf{Log-Normal Distribution Density Function  $ X \sim L\mathcal{N}(\mu^2, \sigma) $}
+
+            \begin{Large} 
+
+                \[ f_X(x) = \frac{1}{\sqrt{2\pi \sigma^2}} exp\left[{-\frac{(log(x) - \mu)^2}{2 \sigma^2}}\right] \] 
+
+            \end{Large}
+
+            \textbf{Exponential Distribution Density Function  $ X \sim \textnormal{Exp}(\lambda) $}
+
+            \begin{Large} 
+
+                \[ f_X(x) = \lambda exp(- \lambda x) \] 
+
+            \end{Large}
+            
+            \textbf{Uniform Distribution Density Function  $ X \sim \textnormal{U}[a, b] $}
+            
+            \begin{Large} 
+
+                \[ f_X(x) = \frac{1}{b - a} \] 
+
+            \end{Large}
 
     \newpage \section{Methods}
 
@@ -318,24 +358,11 @@ defernumbers=false
             In order to see where the models of the distribution classifier models misclassified, 
             I input all the images into the saved Keras models again. 
             Lastly, I tested untrained images with the distribution classifier 153x115 which were not used in any model previously.
-            
-            \begin{figure}[htp]
-            
-                \begin{center}
-
-                    \includegraphics[scale=0.5]{types-of-graphs.png}
-                    \caption{Feed-Forward Neuronales Netz \cite{bishop1995}}
         
-                \end{center}
-                
-            \end{figure}
-        
-            
-
         \subsection{Feed-Forward Neural Networks}
 
             The ANN process used in my model is called a feed-forward neural network or FNN. 
-            The structure of the model consists of three parts: 
+            The structure of the model consists of three parts and are shown in Figure \ref{nn-bishop}: 
             an input layer, one or many hidden layers consisting of neurons, and an output layer. 
             The two main processes in the model are forward-propagation and back-propagation, 
             and can be summed up by their respective goals, producing an estimate and minimizing the loss. 
@@ -359,8 +386,9 @@ defernumbers=false
             
                 \begin{center}
 
-                    \includegraphics[scale=0.5]{types-of-graphs.png}
-                    \caption{Long Short-Term Memory Unit \cite{yan2016}}
+                    \includegraphics[scale=1]{neural-network-bishop.png}
+                    \caption{Neural Network \cite{bishop1995}}
+                    \label{nn-bishop}
         
                 \end{center}
                 
@@ -372,17 +400,7 @@ defernumbers=false
 
            \subsubsection{CNNs vs. FNNs}
 
-            \begin{figure}[ht]
             
-                \begin{center}
-
-                    \includegraphics[scale=0.5]{types-of-graphs.png}
-                    \caption{Long Short-Term Memory Unit \cite{data-basecamp}}
-        
-                \end{center}
-                
-            \end{figure}
-
                 In order to classify images, the FNN model needs to be adjusted to take the tensor shape of images into account. 
                 This is where convolutional neural networks or CNN come into play. 
                 The biggest difference between convolutional neural networks 
@@ -403,8 +421,8 @@ defernumbers=false
             \subsubsection{CNN and Max Pooling Layers}
 
 
-                The most important part of a CNN is its convolutional layers 
-                since they are the means in which the original image gets ‘boiled down’ into its ‘essence’. 
+                The most important parts of a CNN are its convolutional layers and pooling layers 
+                since they are the means in which the original image gets ‘boiled down’ into its ‘essence’.
                 I use this analogy because one can imagine a set of ingredients, pixels making up an image, 
                 that get thrown into a boiling pot where the water evaporates leaving only the important flavors behind. 
                 This visceral example can be summed up more literally, 
@@ -413,6 +431,21 @@ defernumbers=false
                 What are these class scores? They indicate the estimate for each class or y target. 
                 As an example, the final output layer for CIFAR-10 would have dimensions of (1, 1, 10) 
                 since it has a total of 10 classes that an image can be sorted into \cite{cs231n2023} -- airplane, dog, cat, etc.
+                The step by step process can be seen more clearly in Figure \ref{cnn-overview-fig},
+                where the input image of car will be transformed into the most important features and then classified as a car.
+
+                \begin{figure}[ht]
+            
+                    \begin{center}
+    
+                        \includegraphics[scale=0.65]{cnn-overview.png}
+                        \caption{Long Short-Term Memory Unit \cite{cs231n2023}}
+                        \label{cnn-overview-fig}
+            
+                    \end{center}
+                    
+                \end{figure}
+    
 
                 What is a convolutional layer exactly? The four important parts are the filter, kernel, stride, and padding. 
                 These are the parameters that will determine how the convolution is performed. 
@@ -432,11 +465,15 @@ defernumbers=false
                 so that no vital information is lost when the kernel slides over the image. With the parameters decided, 
                 one can now calculate the output volume size or shape of the output tensor.
                 
-                Output Volume Size Equation
+                \textbf{Output Volume Size Equation:}
                 
+                \begin{large}
+                    
+                    \[ \textnormal{V} = \frac{W - F + 2P}{S} + 1    \]
 
+                \end{large}
 
-            % \subsubsection{Max Pooling Layers}
+                Where W := input volume size, F := receptive field size (kernel), P := amount of zero padding, and S := stride of kernel
 
                 The convolutional layer is not the only new layer added in a CNN. 
                 The layer that often proceeds a convolutional layer is a pooling layer, or in the case of my model, a max pooling layer.
@@ -451,45 +488,61 @@ defernumbers=false
                 It can be noted that another pooling method, average pooling, can be used. 
                 It functions the same but averages the values in the feature patch.
 
-                Max Pooling Function
+                \textbf{Max Pooling Function:}
             
+                \begin{large}
+                    
+                    \[ \textnormal{M} = max(f_i)  \]
 
+                \end{large}
 
+                for i = 1, ... , F feature map patches
 
+                \begin{figure}[ht]
+            
+                    \begin{center}
+    
+                        \includegraphics[scale=0.9]{maxpooling.png}
+                        \caption{Maxpooling Example \cite{kumar2021} Credit: Codicals}
+                        \label{maxpool-fig}
+            
+                    \end{center}
+                    
+                \end{figure}
 
             \subsubsection{Rectified Linear Units}
 
                 As stated earlier, the activation function simply tells the neuron to ‘fire’ or ‘rest’ 
                 which in the case of the activation function I used, rectified linear unit function or ReLU, 
-                the value returned is either 0 if x < 0 or x if x > 0 \cite{agarap2019}. 
+                the value returned is either 0 if $ x < 0 $ or x if $ x > 0 $ \cite{agarap2019}. 
                 ReLU is used as an activation function for a few key reasons. First, the simple nature of the function, 
                 f(x) = max(0,x), eliminates complex calculations and reduces the processing demands. 
                 This is especially important in convolutional layers where the amount of parameters can skyrocket 
                 and increase the time needed to learn. This works in practice by promoting sparsity in the model 
                 and sparsity refers to the scenario where most of the cell entries in a matrix, 
                 or in this case tensor, are zero \cite{giskard}.
-
-
-                Figure of the Rectified Linear Unit \cite{agarap2019}
+                
+                \textbf{Rectified Linear Units (ReLU):}
             
-
-                \begin{multicols}{2}
+                \begin{large}
                     
-                    \begin{Large} \[ Sharpe = \frac{R_p - R_f}{\sigma_p} \] \end{Large}
+                    \[ f(x) = x^+ = max(0, x) = \frac{x + \vert x \vert}{2} = 
+                    \left \{^{\textnormal{x if $x > 0$}}_{\textnormal{0 otherwise}} \right. \]
 
-                    \vfill
+                \end{large}
 
-                    \begin{small}
-
-                        \noindent $R_p$ = Portfolio Renditen \newline 
-                        $R_f$ = risikofreier Zinssatz \newline 
-                        $\sigma_p$ = Standardabweichung der Renditen 
-
-                    \end{small}
-
-                \end{multicols}
-
+                \begin{figure}[ht]
             
+                    \begin{center}
+    
+                        \includegraphics[scale=0.8]{relu.png}
+                        \caption{Rectified Linear Unit \cite{agarap2019}}
+                        \label{relu-fig}
+            
+                    \end{center}
+                    
+                \end{figure}            
+
                 
             \subsubsection{Cross-Entropy}
                 
@@ -498,15 +551,35 @@ defernumbers=false
                 The loss function in the models I built was the cross-entropy loss function. 
                 These functions, used in classification problems, calculate how accurate the machine learning 
                 or deep learning model is by defining the difference between the estimated probability 
-                with our desired outcome \cite{365team2023}. These functions come in two versions, 
+                with the desired outcome \cite{365team2023}. These functions come in two versions, 
                 one for binary classification and one for categorical classification. 
                 My model uses categorical cross-entropy because it is a multi-class classification problem, 
-                which means there is only one correct class per x input or image.
+                which means there is only one correct class per x input or image. Had I evaluated if multiple graphs were in an image,
+                then it would become a multi-label classification problem, so the final prediction vector would have
+                a dimensionality of the number of classes, but each element in the vector could be 0 or 1 depending 
+                if the image contains two classes. For example, if an image had two graphs with one uniform distribution 
+                and one normal distribution, then it would look like [0, 0, 1, 1] (classes sorted alphabetically) \cite{gomez2018}.
 
-                Binary Cross-Entropy Function
+                \textbf{Binary Cross-Entropy Function:}
+
+                \begin{large}
+                    
+                    \[ BCEL = - \frac{1}{N} \sum_{i=1}^N (y_i \cdot log(p_i) + (1 - y_i) \cdot log(1-p_i)) \]
+
+                \end{large}
+
+                \textbf{Categorical Cross-Entropy Function:}
                 
-                Categorical Cross-Entropy Function
-                
+                \begin{large}
+                    
+                    \[ CCEL = - \frac{1}{N} \sum_{i=1}^N \sum_{j=1}^C (y_{i,j} \cdot log(p_{i,j})) \]
+
+                \end{large}
+
+                \noindent Where N := number of rows \newline
+                C := number of classes \newline
+                y := indicator if class label j is the correct clasification for observation i \newline
+                p := predicted probability observation i is of class j
 
             \subsubsection{Adam Optimizer}
 
@@ -958,5 +1031,30 @@ defernumbers=false
     
     \printbibliography[heading=bibintoc, title={References}]
 
+
+    \begin{table}[htp]
+        \begin{center}
+            
+            \begin{tabular}{ | l | l | l | l | l | }
+
+                \hline
+                \textbf{Ticker}      & \textbf{Name}                             & \textbf{Geschäft} \\
+                \hline
+                COHR                 & Coherent, Inc.                            & Laser \\
+                CTB                  & Cooper Tire \& Rubber Company             & Reifen \\
+                EQT                  & EQT Corporation                           & Energie \\
+                GOLD                 & Barrick Gold Corporation                  & Bergarbeit \\
+                NSEC                 & National Security Group, Inc.             & Versicherung \\
+                OTTR                 & Otter Tail Corporation                    & Energie \\
+                PEP                  & PepsiCo, Inc.                             & Getränke \\
+                SKYW                 & SkyWest, Inc.                             & Fluglinie \\
+                SNFCA                & Security National Financial Corporation   & Lebensversicherung \\
+                WY                   & Weyerhaeuser Company                      & Abholzung \\
+                \hline
+
+            \end{tabular}
+
+        \end{center}
+    \end{table}
 
 \end{document}
