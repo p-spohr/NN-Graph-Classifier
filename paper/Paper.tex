@@ -311,7 +311,7 @@ defernumbers=false
                 
             \end{figure}
 
-            \textbf{Normal Distribution Density Function  $ X \sim \mathcal{N}(\mu^2, \sigma)  $}
+            \textbf{Normal Distribution Density Function  $ X \sim \mathcal{N}(\mu, \sigma^2)  $}
                
             \begin{Large} 
 
@@ -319,7 +319,7 @@ defernumbers=false
 
             \end{Large}
 
-            \textbf{Log-Normal Distribution Density Function  $ X \sim L\mathcal{N}(\mu^2, \sigma) $}
+            \textbf{Log-Normal Distribution Density Function  $ X \sim L\mathcal{N}(\mu, \sigma^2) $}
 
             \begin{Large} 
 
@@ -557,8 +557,9 @@ defernumbers=false
                 which means there is only one correct class per x input or image. Had I evaluated if multiple graphs were in an image,
                 then it would become a multi-label classification problem, so the final prediction vector would have
                 a dimensionality of the number of classes, but each element in the vector could be 0 or 1 depending 
-                if the image contains two classes. For example, if an image had two graphs with one uniform distribution 
-                and one normal distribution, then it would look like [0, 0, 1, 1] (classes sorted alphabetically) \cite{gomez2018}.
+                if the image contains two classes \cite{gomez2018}. For example, if an image had two graphs with one uniform distribution 
+                and one normal distribution, then it would look like [0, 0, 1, 1] 
+                (classes sorted alphabetically: exp, lognorm, norm, unif). 
 
                 \textbf{Binary Cross-Entropy Function:}
 
@@ -602,8 +603,8 @@ defernumbers=false
                 
                     \begin{center}
 
-                        \includegraphics[scale=0.5]{types-of-graphs.png}
-                        \caption{Long Short-Term Memory Unit \cite{zhang2020}}
+                        \includegraphics[scale=0.9]{adam-opt.png}
+                        \caption{Adam Optimizer Algorithm \cite{kingma2015}}
             
                     \end{center}
                     
@@ -613,7 +614,7 @@ defernumbers=false
         \subsection{Python, Keras, and Libaries}
                 
             The implementation of this project wouldn’t be possible without the various tools used. 
-            I’ll describe them all briefly and list out the versions used for the sake of reproducibility. 
+            I’ll describe them all briefly and list out the versions used for the sake of reproducibility in Table \ref{py-versions}. 
             TensorFlow \cite{abadi2016-tensorflow} is an end-to-end platform for building machine learning models 
             and that works with Keras \cite{chollet2015-keras}, which is a deep learning API written in Python connected to TensorFlow, 
             to create all of the models in this project. 
@@ -626,10 +627,6 @@ defernumbers=false
             Lastly, one of the most important libraires for image classification using TensorFlow 
             and Keras is Pillow \cite{clark2015pillow} since it allows the user to manipulate individual pixels of an image using Python. 
             The PIL Image is a class that can be used and returned using TensorFlow.
-
-            Table of Versions
-        
-        
                 
             \begin{table}[htp]
 
@@ -638,20 +635,21 @@ defernumbers=false
                 \scalebox{1.2}[1.2]{
                 \begin{tabular}{ | c | c | }
                 \hline
-                \textbf{Library}    &       \textbf{Versionen} \\
+                \textbf{Library}    &       \textbf{Versions} \\
                 \hline
                 python              &       3.10.13 \\ 
                 tensorflow          &       2.10.0 \\
                 numpy               &       1.26.0 \\
                 pandas              &       2.1.1 \\
                 matplotlib          &       3.8.0 \\
+                pillow              &       10.0.1 \\
                 
                 \hline
                 \end{tabular}
                 }
 
-                \caption{Python und Library Versionen}
-                \label{pl-versionen}
+                \caption{Python und Library Versions}
+                \label{py-versions}
 
                 \end{center}
 
@@ -668,17 +666,73 @@ defernumbers=false
             which will be used in the distribution graph classifiers. 
             Each model has a specific name consisting of acronyms to distinguish itself: 
             CIFAR is the natural images, SCP is the scraped graphs, GEN stands for the generated graphs, 
-            and 1 indicates the model structure. This results in the four models: CIFAR\_SCP\_1, CIFAR\_GEN\_1, GEN\_SCP\_1, and CIFAR\_GEN\_SCP\_1.
+            and 1 indicates the model structure. This results in the four models: CIFAR\_SCP\_1, CIFAR\_GEN\_1, GEN\_SCP\_1, 
+            and CIFAR\_GEN\_SCP\_1. The model struture for all classifiers is shown by layer in Table \ref{model-layer-info}.
 
-            CIFAR\_SCP\_1
-            
+            \begin{table}[htp]
+
+                \begin{center} 
+
+                \scalebox{0.9}{
+                \begin{tabular}{ | l | l | l | }
+                \hline
+                \textbf{Layer} &  \textbf{Type}     &  \textbf{Parameters}    \\
+                \hline
+                1              &  Rescaling         &  (1.0/255, input\_shape = (H, W, 3))                \\ 
+                2              &  Conv2D            &  (filter\_count = 16, kernal\_size = 3, padding='same', activation = 'relu')   \\
+                3              &  MaxPooling2D      &  none                        \\
+                4              &  Conv2D            &  (32, 3, 'same', 'relu')                        \\
+                5              &  MaxPooling2D      &  none                       \\
+                6              &  Conv2D            &  (64, 3, 'same', 'relu')                           \\
+                7              &  MaxPooling2D      &  none                           \\
+                8              &  Flatten           &  none                            \\
+                9              &  Dense             &  (units = 128, 'relu')                            \\
+                10             &  Dense             &  (number\_of\_classes = 4)                            \\
+                
+                \hline
+                \end{tabular}
+                }
+
+                \caption{Model 1 Layer Information}
+                \label{model-layer-info}
+
+                \end{center}
+
+            \end{table}
+
+            \begin{table}[htp]
+
+                \begin{center} 
+
+                \scalebox{1.2}{
+                \begin{tabular}{ | c | c | c | }
+                \hline
+                \textbf{Model Info}    &       \textbf{CIFAR\_SCP\_1}     &       \textbf{CIFAR\_GEN\_1} \\
+                \hline
+                x                      &       32x32 images               &       32x32 images \\ 
+                y                      &       [graph, natural]           &       [graph, natural] \\
+                total                  &       17,753                     &       18,000 \\
+                train                  &       14,203                     &       14,400\\
+                val                    &       3,550                      &       3600 \\
+                model                  &       1                          &       1 \\
+                
+                \hline
+                \end{tabular}
+                }
+
+                \caption{Model Information for classifying graphs from natural images}
+                \label{cifar-graphs-1}
+
+                \end{center}
+
+            \end{table}
+
+
             The first model created aims to classify natural images from the scraped graphs. 
             This answers the first basic question: how easily can the model distinguish a natural image from a graph image? 
             The desired outcome would have a high accuracy since graphs have many combinations of characteristics 
             that won’t be found in natural images, for example grid lines, large areas of only one color and surrounding text. 
-            One can imagine a natural image with some of these features, but this would be a small number of instances.
-            
-            CIFAR\_GEN\_1
+            One can imagine a natural image with some of these features, but this would be a small number of instances. 
             
             The second model, much like the first one, answers the question: 
             are the generated graphs distinguishable from the natural images as well? 
@@ -689,40 +743,49 @@ defernumbers=false
             This could be turned around and a much higher accuracy in CIFAR\_GEN\_1 could indicate 
             that one of my original theories about the scraped dataset could be correct 
             and that is the ‘graph-like’ nature of the images in the scraped dataset which are more artistic 
-            or non-numerical representations of graphs.
-            
-            GEN\_SCP\_1
-            
-            This was a major test of the simple graph classifier 
-            since it will have indicated if my generated graphs were randomized enough to simulate what a bunch of scraped graphs would be. 
+            or non-numerical representations of graphs. 
+            In Table \ref{cifar-graphs-1}, one can see that the input in CIFAR\_SCP\_1 and CIFAR\_GEN\_1 are balanced.
+                        
+            GEN\_SCP\_1 was a major test of the simple graph classifier 
+            since it will have indicated if my generated graphs were randomized enough to simulate what a bunch of scraped graphs would be.
             The desired outcome here would be a lower accuracy of around 50 percent to show the interchangeability of the two datasets. 
             A high accuracy would indicate the need to randomize the generated graphs more and put them through more preprocessing steps.
-            
-            CIFAR\_GEN\_SCP\_1
-            
+                        
             Lastly, all of the datasets were used in a model to classify them as natural, generated, or scraped. 
             The outcome of this would not be as important as the first three, 
             but it would have reinforced the previous intermediate conclusions about the nature of the datasets. 
             A very high accuracy would have meant all datasets are highly distinguishable from one another 
-            and point towards tweaking the generated graphs.
+            and point towards tweaking the generated graphs. The information for GEN\_SCP\_1 and CIFAR\_GEN\_SCP\_1
+            can be seen in Table \ref{cifar-gen-scp-1}.
             
+            \begin{table}[htp]
 
-            \newpage
-            \begin{Large} \[ V_p = \sum_{j=1}^{A}\sum_{i=1}^{M}P^T_{i+1} \cdot w_i \] \end{Large}
+                \begin{center} 
 
-            \begin{multicols}{2}
-                \begin{footnotesize}
-                    
-                    \noindent M = 360 Monate \\
-                    A = 10 Aktien \\
-                    P = tägliche Preise von Aktie A im Monat M \\
-                    w = monatliche Gewicht von Aktie A im Monat M \\
-                    $P_{1+1}$ = Preise im Februar 1990 von Aktie A \\
-                    $w_1$ = Gewicht im Januar 1990 von Aktie A 
+                \scalebox{1.2}{
+                \begin{tabular}{ | c | c | c | }
+                \hline
+                \textbf{Model Info}    &       \textbf{GEN\_SCP\_1}       &       \textbf{CIFAR\_GEN\_SCP\_1} \\
+                \hline
+                x                      &       32x32 images               &       32x32 images \\ 
+                y                      &       [generated, scraped]       &       [generated, natural, scraped] \\
+                total                  &       15,753                     &       25,753 \\
+                train                  &       12,603                     &       20,603\\
+                val                    &       3,150                      &       5,150 \\
+                model                  &       1                          &       1 \\
+                
+                \hline
+                \end{tabular}
+                }
 
-                \end{footnotesize}
-            \end{multicols}
+                \caption{Model Information for classifying generated from scraped graphs}
+                \label{cifar-gen-scp-1}
 
+                \end{center}
+
+            \end{table}
+
+         
         \subsection{Distribution Graph Classifier}
 
             The core of the project was being able to create a model that can classify graphs of four different probability distributions 
@@ -731,12 +794,36 @@ defernumbers=false
             The 1 indicates like earlier the first model structure. The three models are as follows: 
             DIST\_32x32\_1, DIST\_115x86\_1, and DIST\_153x115\_1. It is important to note that dimensions are reversed in TensorFlow 
             and the shape of the image is (height, width, rgb).
-
-            NOTE: \newline
-            \url{https://github.com/p-spohr/NN-Graph-Classifier/tree/main/classifiers/distribution_graph_classifiers}
             
+            \begin{table}[htp]
+
+                \begin{center} 
+
+                \scalebox{0.9}{
+                \begin{tabular}{ | c | c | c | c | }
+                \hline
+                \textbf{Model Info} &  \textbf{DIST\_32x32\_1}      &  \textbf{DIST\_115x86\_1}    &  \textbf{DIST\_153x115\_1} \\
+                \hline
+                x                   &  32x32 images                 &  115x86 images               &  153x115 images \\ 
+                y                   &  [exp, lognorm, norm, unif]   &  [exp, lognorm, norm, unif]  &  [exp, lognorm, norm, unif] \\
+                total               &  8,000                        &  8,000                       &  8,000 \\
+                train               &  6,400                        &  6,400                       &  6,400 \\
+                val                 &  1,600                        &  1,600                       &  1,600 \\
+                model               &  1                            &  1                           &  1 \\
+                
+                \hline
+                \end{tabular}
+                }
+
+                \caption{Model Information for all distribution graph classifiers}
+                \label{dist-dims-1}
+
+                \end{center}
+
+            \end{table}
+
             The images used, total number of images, training images, validation images, 
-            and model structure are all the same, except for the dimensions of the image. 
+            and model structure are all the same, except for the dimensions of the image and that can be seen in Table \ref{dist-dims-1}.
             The reason for this is how much information is lost when the image is 32x32. 
             It was easy to assume that the model would perform poorly when the density function line almost completely disappears. 
             My solution was to increase the dimensions and thereby its quality. 
@@ -762,6 +849,51 @@ defernumbers=false
             The last simple graph classifier model, CIFAR\_GEN\_SCP\_1 performed 
             how the earlier models indicated with a 98.12 percent validation accuracy.
 
+            \begin{figure}
+            
+                \begin{center}
+
+                    \includegraphics[scale=0.8]{CIFAR_SCP_1_HIST_RESULTS.png}
+                    \caption{CIFAR\_SCP\_1 Training and Validation Accuracy and Loss}
+                    \label{cifar-scp-acc-loss}
+        
+                \end{center}
+                
+        
+            
+                \begin{center}
+
+                    \includegraphics[scale=0.8]{CIFAR_GEN_1_HIST_RESULTS.png}
+                    \caption{CIFAR\_GEN\_1 Training and Validation Accuracy and Loss}
+                    \label{cifar-gen-acc-loss}
+        
+                \end{center}
+
+            \end{figure}
+
+            \begin{figure}
+            
+                \begin{center}
+
+                    \includegraphics[scale=0.8]{GEN_SCP_1_HIST_RESULTS.png}
+                    \caption{GEN\_SCP\_1 Training and Validation Accuracy and Loss}
+                    \label{gen-scp-acc-loss}
+        
+                \end{center}
+                
+        
+            
+                \begin{center}
+
+                    \includegraphics[scale=0.8]{CIFAR_GEN_SCP_1_HIST_RESULTS.png}
+                    \caption{GEN\_SCP\_1 Training and Validation Accuracy and Loss}
+                    \label{cifar-gen-scp-acc-loss}
+        
+                \end{center}
+                
+            \end{figure}
+
+
             In order to properly evaluate the models, the accuracy and loss were not enough as indicators alone. 
             To this end, I saved all of the models and fed in the graph images they have not seen yet. 
             The models simply classified each image as natural or graph. First, I put the generated graphs in CIFAR\_SCP\_1. 
@@ -780,43 +912,6 @@ defernumbers=false
             but the graphs with uniform distribution were most often classified as natural images.
             
             Falsely Labeled Generated Graphs in CIFAR\_SCP\_1
-        
-
-            \begin{figure}[ht]
-            
-                \begin{center}
-
-                    \includegraphics[scale=0.5]{types-of-graphs.png}
-                    \caption{Summe monatlichen Renditen von 1990 bis 2020}
-                    \label{s-m-renditen-fig}
-        
-                \end{center}
-                
-            \end{figure}
-
-
-           
-
-            \begin{table}[htp]
-                \begin{center}
-                    
-                    \begin{tabular}{ | l | l | }
-
-                        \hline
-                        \textbf{Portfolio}   & \textbf{Summe Monatlichen Renditen \%} \\
-                        \hline
-                        OPT mit RFR          &      6604,73 \\            
-                        OPT ohne RFR         &      5331,83 \\
-                        EQU                  &      213,32 \\                 
-                        GSPC                 &      248,56 \\          
-                             
-                        \hline
-
-                    \end{tabular}
-                    \caption{Summe Monatlichen Renditen}
-                    \label{s-m-renditen-tab}
-                \end{center}
-            \end{table}
 
         \subsection{Distribution Graph Classifiers}
 
@@ -837,6 +932,38 @@ defernumbers=false
             Overall, the results are promising, but they require an evaluation to see where the graphs are getting misclassified. 
             The validation accuracy of DIST\_115x86\_1 and DIST\_153x115\_1 are hanging around 93 percent, 
             so the question becomes what are the images that are not getting classified correctly. 
+            
+            \begin{figure}
+            
+                \begin{center}
+
+                    \includegraphics[scale=0.6]{DIST_32x32_1_HIST_RESULTS.png}
+                    \caption{DIST\_32x32\_1 Training and Validation Accuracy and Loss}
+                    \label{dist-32-32-val-loss}
+        
+                \end{center}
+                
+        
+            
+                \begin{center}
+
+                    \includegraphics[scale=0.6]{DIST_115x86_1_HIST_RESULTS.png}
+                    \caption{DIST\_115x86\_1 Training and Validation Accuracy and Loss}
+                    \label{dist-115-86-val-loss}
+        
+                \end{center}
+
+            
+                \begin{center}
+
+                    \includegraphics[scale=0.6]{DIST_153x115_1_HIST_RESULTS.png}
+                    \caption{DIST\_153x115\_1 Training and Validation Accuracy and Loss}
+                    \label{dist-153-115-val-loss}
+        
+                \end{center}
+             
+                
+            \end{figure}
 
             After the training was finished, I saved all the models and fed all 8,000 graphs into the DIST\_153x115\_1 for evaluation. 
             I decided to stick with evaluating one model since doing the same process for all would have been redundant 
@@ -882,97 +1009,6 @@ defernumbers=false
             It is surprising how 61.90 percent of uniform graphs in the test dataset were misclassified as log-normal 
             since the generated uniform graphs were predicted so accurately in DIST\_153x115\_1.
             
-  
-                
-        \begin{table}[htp]
-            \begin{center}
-                
-                \begin{tabular}{ | l | l | }
-
-                    \hline
-                    \textbf{Portfolio}   & \textbf{Monatlicher Durchschnitt} \\
-                    \hline
-                    OPT mit RFR          & 39,9735  \\          
-                    OPT ohne RFR         & 41,1696 \\
-                    EQU                  & 52,8962  \\              
-                    GSPC                 & 72,302  \\       
-                            
-                    \hline
-
-                \end{tabular}
-                \caption{Gesamtsumme der Sharpe-Quotienten ohne den Risikofreinen Zinssatz}
-                \label{gs-sq-ohne-rfz}
-
-            \end{center}
-        \end{table}
-
-        \begin{table}[htp]
-            \begin{center}
-                
-                \begin{tabular}{ | l | l | }
-
-                    \hline
-                    \textbf{Portfolio}   & \textbf{Monatlicher Durchschnitt} \\
-                    \hline
-                    OPT mit RFR          & -0,0026 \\      
-                    OPT ohne RFR         & 0,0225 \\
-                    EQU                  & 0,0934 \\            
-                    GSPC                 & 1,7403 \\     
-                            
-                    \hline
-
-                \end{tabular}
-                \caption{Monatlicher Durchschnitt der Sharpe-Quotienten ohne den Risikofreinen Zinssatz}
-                \label{md-sq-ohne-rfz}
-
-            \end{center}
-        \end{table}
-
-
-        \begin{table}[htp]
-            \begin{center}
-                
-                \begin{tabular}{ | l | l | }
-
-                    \hline
-                    \textbf{Portfolio}   & \textbf{Monatlicher Durchschnitt} \\
-                    \hline
-                    OPT mit RFR          & 30,2492  \\          
-                    OPT ohne RFR         & 28,7633 \\
-                    EQU                  & -345,5259  \\              
-                    GSPC                 & -395,0716  \\       
-                            
-                    \hline
-
-                \end{tabular}
-                \caption{Gesamtsumme der Sharpe-Quotienten mit dem Risikofreinen Zinssatz}
-                \label{gs-sq-mit-rfz}
-
-            \end{center}
-        \end{table}
-
-        \begin{table}[htp]
-            \begin{center}
-                
-                \begin{tabular}{ | l | l | }
-
-                    \hline
-                    \textbf{Portfolio}   & \textbf{Monatlicher Durchschnitt} \\
-                    \hline
-                    OPT mit RFR          & 0,08449 \\      
-                    OPT ohne RFR         & 0,08034 \\
-                    EQU                  & -0,9651 \\            
-                    GSPC                 & -1,1035 \\     
-                            
-                    \hline
-
-                \end{tabular}
-                \caption{Monatlicher Durchschnitt der Sharpe-Quotienten mit dem Risikofreinen Zinssatz}
-                \label{md-sq-mit-rfz}
-
-            \end{center}
-        \end{table}
-
         
         \newpage \subsection{Conclusions and Further Research}
 
@@ -985,7 +1021,7 @@ defernumbers=false
             if one considers the scraped graphs to be a genuine sample of possible and currently available graphs. 
             The GEN\_SCP\_1’s high accuracy points towards this theory but a large limiting factor is the small sample size -- 
             only 8,000 generated graphs and 7,753 scraped graphs. 
-            Some results that surprised me was that scraped graphs in CIFAR\_GEN\_1 were misclassified as natural images 
+            Some results that surprised me were that scraped graphs in CIFAR\_GEN\_1 were misclassified as natural images 
             around 63 percent of the time. This could indicate 
             that the generated graphs don’t consider the more chaotic nature of graph design. 
             It would be safe to say that the generated graphs are very conservative in appearance. 
@@ -1056,5 +1092,22 @@ defernumbers=false
 
         \end{center}
     \end{table}
+
+
+
+    \begin{Large} \[ V_p = \sum_{j=1}^{A}\sum_{i=1}^{M}P^T_{i+1} \cdot w_i \] \end{Large}
+
+    \begin{multicols}{2}
+        \begin{footnotesize}
+            
+            \noindent M = 360 Monate \\
+            A = 10 Aktien \\
+            P = tägliche Preise von Aktie A im Monat M \\
+            w = monatliche Gewicht von Aktie A im Monat M \\
+            $P_{1+1}$ = Preise im Februar 1990 von Aktie A \\
+            $w_1$ = Gewicht im Januar 1990 von Aktie A 
+
+        \end{footnotesize}
+    \end{multicols}
 
 \end{document}

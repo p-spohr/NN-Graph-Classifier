@@ -17,10 +17,10 @@
 \contentsline {subsubsection}{\numberline {3.3.4}Cross-Entropy}{16}{subsubsection.3.3.4}%
 \contentsline {subsubsection}{\numberline {3.3.5}Adam Optimizer}{17}{subsubsection.3.3.5}%
 \contentsline {subsection}{\numberline {3.4}Python, Keras, and Libaries}{18}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Simplified Graph Classifier}{18}{subsection.3.5}%
-\contentsline {subsection}{\numberline {3.6}Distribution Graph Classifier}{21}{subsection.3.6}%
-\contentsline {section}{\numberline {4}Results}{21}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Simple Graph Classifiers}{21}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Distribution Graph Classifiers}{23}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Conclusions and Further Research}{27}{subsection.4.3}%
-\contentsline {section}{References}{28}{section*.2}%
+\contentsline {subsection}{\numberline {3.5}Simplified Graph Classifier}{19}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Distribution Graph Classifier}{22}{subsection.3.6}%
+\contentsline {section}{\numberline {4}Results}{22}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Simple Graph Classifiers}{22}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Distribution Graph Classifiers}{26}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Conclusions and Further Research}{29}{subsection.4.3}%
+\contentsline {section}{References}{30}{section*.2}%

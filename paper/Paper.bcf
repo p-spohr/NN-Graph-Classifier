@@ -2382,7 +2382,7 @@
     <bcf:citekey order="19" intorder="1">365team2023</bcf:citekey>
     <bcf:citekey order="20" intorder="1">gomez2018</bcf:citekey>
     <bcf:citekey order="21" intorder="1">kingma2015</bcf:citekey>
-    <bcf:citekey order="22" intorder="1">zhang2020</bcf:citekey>
+    <bcf:citekey order="22" intorder="1">kingma2015</bcf:citekey>
     <bcf:citekey order="23" intorder="1">abadi2016-tensorflow</bcf:citekey>
     <bcf:citekey order="24" intorder="1">chollet2015-keras</bcf:citekey>
     <bcf:citekey order="25" intorder="1">harris2020-numpy</bcf:citekey>
