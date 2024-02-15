@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.12) (preloaded format=pdflatex 2024.1.6)  14 FEB 2024 11:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.12) (preloaded format=pdflatex 2024.1.6)  15 FEB 2024 10:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -590,121 +590,167 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.100     \newpage
+l.103     \newpage
                    [1] [2] [3] [4] [5]
 <./imgs/natural_overview.png, id=200, 722.7pt x 578.16pt>
 File: ./imgs/natural_overview.png Graphic file (type png)
 <use ./imgs/natural_overview.png>
-Package pdftex.def Info: ./imgs/natural_overview.png  used on input line 226.
+Package pdftex.def Info: ./imgs/natural_overview.png  used on input line 229.
 (pdftex.def)             Requested size: 433.62334pt x 346.89867pt.
  [6]
 <./imgs/scraped_overview_original.png, id=211, 722.7pt x 578.16pt>
 File: ./imgs/scraped_overview_original.png Graphic file (type png)
 <use ./imgs/scraped_overview_original.png>
-Package pdftex.def Info: ./imgs/scraped_overview_original.png  used on input line 255.
+Package pdftex.def Info: ./imgs/scraped_overview_original.png  used on input line 258.
 (pdftex.def)             Requested size: 433.62334pt x 346.89867pt.
  [7 <./imgs/natural_overview.png>] [8 <./imgs/scraped_overview_original.png>]
 <./imgs/norm_460x345_overview.png, id=225, 722.7pt x 578.16pt>
 File: ./imgs/norm_460x345_overview.png Graphic file (type png)
 <use ./imgs/norm_460x345_overview.png>
-Package pdftex.def Info: ./imgs/norm_460x345_overview.png  used on input line 306.
+Package pdftex.def Info: ./imgs/norm_460x345_overview.png  used on input line 309.
 (pdftex.def)             Requested size: 433.62334pt x 346.89867pt.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <17.28> on input line 318.
+(Font)              <17.28> on input line 321.
  [9] [10 <./imgs/norm_460x345_overview.png>]
 <./imgs/neural-network-bishop.png, id=242, 462.72874pt x 266.9975pt>
 File: ./imgs/neural-network-bishop.png Graphic file (type png)
 <use ./imgs/neural-network-bishop.png>
-Package pdftex.def Info: ./imgs/neural-network-bishop.png  used on input line 389.
+Package pdftex.def Info: ./imgs/neural-network-bishop.png  used on input line 392.
 (pdftex.def)             Requested size: 462.72762pt x 266.99683pt.
  [11] [12 <./imgs/neural-network-bishop.png>]
 <./imgs/cnn-overview.png, id=259, 704.6325pt x 337.26pt>
 File: ./imgs/cnn-overview.png Graphic file (type png)
 <use ./imgs/cnn-overview.png>
-Package pdftex.def Info: ./imgs/cnn-overview.png  used on input line 441.
+Package pdftex.def Info: ./imgs/cnn-overview.png  used on input line 444.
 (pdftex.def)             Requested size: 458.0057pt x 219.2164pt.
  [13 <./imgs/cnn-overview.png>]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 472.
+(Font)              <14.4> on input line 475.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 472.
+(Font)              <7> on input line 475.
  [14]
-<./imgs/maxpooling.png, id=273, 514.92375pt x 256.70906pt>
+<./imgs/maxpooling.png, id=274, 514.92375pt x 256.70906pt>
 File: ./imgs/maxpooling.png Graphic file (type png)
 <use ./imgs/maxpooling.png>
-Package pdftex.def Info: ./imgs/maxpooling.png  used on input line 505.
+Package pdftex.def Info: ./imgs/maxpooling.png  used on input line 508.
 (pdftex.def)             Requested size: 463.4271pt x 231.03601pt.
  [15 <./imgs/maxpooling.png>]
-<./imgs/relu.png, id=286, 292.59312pt x 261.97874pt>
+<./imgs/relu.png, id=287, 292.59312pt x 261.97874pt>
 File: ./imgs/relu.png Graphic file (type png)
 <use ./imgs/relu.png>
-Package pdftex.def Info: ./imgs/relu.png  used on input line 538.
+Package pdftex.def Info: ./imgs/relu.png  used on input line 541.
 (pdftex.def)             Requested size: 234.0748pt x 209.58327pt.
  [16 <./imgs/relu.png>]
-<./imgs/adam-opt.png, id=300, 500.87125pt x 317.185pt>
+<./imgs/adam-opt.png, id=301, 500.87125pt x 317.185pt>
 File: ./imgs/adam-opt.png Graphic file (type png)
 <use ./imgs/adam-opt.png>
-Package pdftex.def Info: ./imgs/adam-opt.png  used on input line 606.
+Package pdftex.def Info: ./imgs/adam-opt.png  used on input line 609.
 (pdftex.def)             Requested size: 450.77994pt x 285.46384pt.
- [17] [18 <./imgs/adam-opt.png>] [19] [20] [21]
-Overfull \hbox (2.26486pt too wide) in paragraph at lines 816--817
+ [17] [18 <./imgs/adam-opt.png>] [19] [20]
+Overfull \hbox (2.26486pt too wide) in paragraph at lines 819--820
  [] 
  []
 
-[22]
-<./imgs/CIFAR_SCP_1_HIST_RESULTS.png, id=355, 578.16pt x 289.08pt>
+[21] [22]
+<./imgs/CIFAR_SCP_1_HIST_RESULTS.png, id=356, 578.16pt x 289.08pt>
 File: ./imgs/CIFAR_SCP_1_HIST_RESULTS.png Graphic file (type png)
 <use ./imgs/CIFAR_SCP_1_HIST_RESULTS.png>
-Package pdftex.def Info: ./imgs/CIFAR_SCP_1_HIST_RESULTS.png  used on input line 856.
+Package pdftex.def Info: ./imgs/CIFAR_SCP_1_HIST_RESULTS.png  used on input line 859.
 (pdftex.def)             Requested size: 462.52863pt x 231.2643pt.
-<./imgs/CIFAR_GEN_1_HIST_RESULTS.png, id=356, 578.16pt x 289.08pt>
+<./imgs/CIFAR_GEN_1_HIST_RESULTS.png, id=357, 578.16pt x 289.08pt>
 File: ./imgs/CIFAR_GEN_1_HIST_RESULTS.png Graphic file (type png)
 <use ./imgs/CIFAR_GEN_1_HIST_RESULTS.png>
-Package pdftex.def Info: ./imgs/CIFAR_GEN_1_HIST_RESULTS.png  used on input line 866.
+Package pdftex.def Info: ./imgs/CIFAR_GEN_1_HIST_RESULTS.png  used on input line 869.
 (pdftex.def)             Requested size: 462.52863pt x 231.2643pt.
-<./imgs/GEN_SCP_1_HIST_RESULTS.png, id=357, 578.16pt x 289.08pt>
+<./imgs/GEN_SCP_1_HIST_RESULTS.png, id=358, 578.16pt x 289.08pt>
 File: ./imgs/GEN_SCP_1_HIST_RESULTS.png Graphic file (type png)
 <use ./imgs/GEN_SCP_1_HIST_RESULTS.png>
-Package pdftex.def Info: ./imgs/GEN_SCP_1_HIST_RESULTS.png  used on input line 878.
+Package pdftex.def Info: ./imgs/GEN_SCP_1_HIST_RESULTS.png  used on input line 881.
 (pdftex.def)             Requested size: 462.52863pt x 231.2643pt.
-<./imgs/CIFAR_GEN_SCP_1_HIST_RESULTS.png, id=358, 578.16pt x 289.08pt>
+<./imgs/CIFAR_GEN_SCP_1_HIST_RESULTS.png, id=359, 578.16pt x 289.08pt>
 File: ./imgs/CIFAR_GEN_SCP_1_HIST_RESULTS.png Graphic file (type png)
 <use ./imgs/CIFAR_GEN_SCP_1_HIST_RESULTS.png>
-Package pdftex.def Info: ./imgs/CIFAR_GEN_SCP_1_HIST_RESULTS.png  used on input line 888.
+Package pdftex.def Info: ./imgs/CIFAR_GEN_SCP_1_HIST_RESULTS.png  used on input line 891.
 (pdftex.def)             Requested size: 462.52863pt x 231.2643pt.
  [23] [24 <./imgs/CIFAR_SCP_1_HIST_RESULTS.png> <./imgs/CIFAR_GEN_1_HIST_RESULTS.png>] [25 <./imgs/GEN_SCP_1_HIST_RESULTS.png> <./imgs/CIFAR_GEN_SCP_1_HIST_RESULTS.png>]
-<./imgs/DIST_32x32_1_HIST_RESULTS.png, id=380, 578.16pt x 289.08pt>
+<./imgs/misclassified-gen-in-cifar-scp-1.png, id=383, 484.209pt x 363.5181pt>
+File: ./imgs/misclassified-gen-in-cifar-scp-1.png Graphic file (type png)
+<use ./imgs/misclassified-gen-in-cifar-scp-1.png>
+Package pdftex.def Info: ./imgs/misclassified-gen-in-cifar-scp-1.png  used on input line 923.
+(pdftex.def)             Requested size: 338.94398pt x 254.46094pt.
+<./imgs/mis-as-nat-exp-20.jpg, id=384, 165.61874pt x 165.61874pt>
+File: ./imgs/mis-as-nat-exp-20.jpg Graphic file (type jpg)
+<use ./imgs/mis-as-nat-exp-20.jpg>
+Package pdftex.def Info: ./imgs/mis-as-nat-exp-20.jpg  used on input line 936.
+(pdftex.def)             Requested size: 122.55847pt x 122.55847pt.
+<./imgs/mis-as-nat-lognorm-544.jpg, id=385, 164.86594pt x 164.86594pt>
+File: ./imgs/mis-as-nat-lognorm-544.jpg Graphic file (type jpg)
+<use ./imgs/mis-as-nat-lognorm-544.jpg>
+Package pdftex.def Info: ./imgs/mis-as-nat-lognorm-544.jpg  used on input line 936.
+(pdftex.def)             Requested size: 122.00137pt x 122.00137pt.
+<./imgs/mis-as-nat-norm-695.jpg, id=386, 164.86594pt x 165.61874pt>
+File: ./imgs/mis-as-nat-norm-695.jpg Graphic file (type jpg)
+<use ./imgs/mis-as-nat-norm-695.jpg>
+Package pdftex.def Info: ./imgs/mis-as-nat-norm-695.jpg  used on input line 938.
+(pdftex.def)             Requested size: 122.00137pt x 122.55847pt.
+<./imgs/mis-as-nat-unif-352.jpg, id=387, 164.86594pt x 164.86594pt>
+File: ./imgs/mis-as-nat-unif-352.jpg Graphic file (type jpg)
+<use ./imgs/mis-as-nat-unif-352.jpg>
+Package pdftex.def Info: ./imgs/mis-as-nat-unif-352.jpg  used on input line 938.
+(pdftex.def)             Requested size: 122.00137pt x 122.00137pt.
+ [26 <./imgs/misclassified-gen-in-cifar-scp-1.png>] [27 <./imgs/mis-as-nat-exp-20.jpg> <./imgs/mis-as-nat-lognorm-544.jpg> <./imgs/mis-as-nat-norm-695.jpg> <./imgs/mis-as-nat-unif-352.jpg>]
+<./imgs/DIST_32x32_1_HIST_RESULTS.png, id=399, 578.16pt x 289.08pt>
 File: ./imgs/DIST_32x32_1_HIST_RESULTS.png Graphic file (type png)
 <use ./imgs/DIST_32x32_1_HIST_RESULTS.png>
-Package pdftex.def Info: ./imgs/DIST_32x32_1_HIST_RESULTS.png  used on input line 940.
+Package pdftex.def Info: ./imgs/DIST_32x32_1_HIST_RESULTS.png  used on input line 974.
 (pdftex.def)             Requested size: 346.89867pt x 173.44933pt.
-<./imgs/DIST_115x86_1_HIST_RESULTS.png, id=381, 578.16pt x 289.08pt>
+<./imgs/DIST_115x86_1_HIST_RESULTS.png, id=400, 578.16pt x 289.08pt>
 File: ./imgs/DIST_115x86_1_HIST_RESULTS.png Graphic file (type png)
 <use ./imgs/DIST_115x86_1_HIST_RESULTS.png>
-Package pdftex.def Info: ./imgs/DIST_115x86_1_HIST_RESULTS.png  used on input line 950.
+Package pdftex.def Info: ./imgs/DIST_115x86_1_HIST_RESULTS.png  used on input line 984.
 (pdftex.def)             Requested size: 346.89867pt x 173.44933pt.
-<./imgs/DIST_153x115_1_HIST_RESULTS.png, id=382, 578.16pt x 289.08pt>
+<./imgs/DIST_153x115_1_HIST_RESULTS.png, id=401, 578.16pt x 289.08pt>
 File: ./imgs/DIST_153x115_1_HIST_RESULTS.png Graphic file (type png)
 <use ./imgs/DIST_153x115_1_HIST_RESULTS.png>
-Package pdftex.def Info: ./imgs/DIST_153x115_1_HIST_RESULTS.png  used on input line 959.
+Package pdftex.def Info: ./imgs/DIST_153x115_1_HIST_RESULTS.png  used on input line 993.
 (pdftex.def)             Requested size: 346.89867pt x 173.44933pt.
 
 
-LaTeX Warning: Float too large for page by 10.8917pt on input line 966.
+LaTeX Warning: Float too large for page by 10.8917pt on input line 1000.
 
-[26] [27 <./imgs/DIST_32x32_1_HIST_RESULTS.png> <./imgs/DIST_115x86_1_HIST_RESULTS.png> <./imgs/DIST_153x115_1_HIST_RESULTS.png>] [28] [29] [30]
-Overfull \hbox (14.10497pt too wide) in paragraph at lines 1068--1068
+<./imgs/mis-exp-count-in-dist.png, id=405, 333.8874pt x 250.0542pt>
+File: ./imgs/mis-exp-count-in-dist.png Graphic file (type png)
+<use ./imgs/mis-exp-count-in-dist.png>
+Package pdftex.def Info: ./imgs/mis-exp-count-in-dist.png  used on input line 1027.
+(pdftex.def)             Requested size: 210.35017pt x 157.53496pt.
+<./imgs/mis-lognorm-count-in-dist.png, id=406, 333.1647pt x 250.0542pt>
+File: ./imgs/mis-lognorm-count-in-dist.png Graphic file (type png)
+<use ./imgs/mis-lognorm-count-in-dist.png>
+Package pdftex.def Info: ./imgs/mis-lognorm-count-in-dist.png  used on input line 1027.
+(pdftex.def)             Requested size: 209.89487pt x 157.53496pt.
+<./imgs/mis-norm-count-in-dist.png, id=407, 333.8874pt x 250.0542pt>
+File: ./imgs/mis-norm-count-in-dist.png Graphic file (type png)
+<use ./imgs/mis-norm-count-in-dist.png>
+Package pdftex.def Info: ./imgs/mis-norm-count-in-dist.png  used on input line 1029.
+(pdftex.def)             Requested size: 210.35017pt x 157.53496pt.
+<./imgs/mis-unif-count-in-dist.png, id=408, 333.1647pt x 249.3315pt>
+File: ./imgs/mis-unif-count-in-dist.png Graphic file (type png)
+<use ./imgs/mis-unif-count-in-dist.png>
+Package pdftex.def Info: ./imgs/mis-unif-count-in-dist.png  used on input line 1029.
+(pdftex.def)             Requested size: 209.89487pt x 157.07967pt.
+[28] [29 <./imgs/DIST_32x32_1_HIST_RESULTS.png> <./imgs/DIST_115x86_1_HIST_RESULTS.png> <./imgs/DIST_153x115_1_HIST_RESULTS.png>] [30 <./imgs/mis-exp-count-in-dist.png> <./imgs/mis-lognorm-count-in-dist.png> <./imgs/mis-norm-count-in-dist.png> <./imgs/mis-unif-count-in-dist.png>] [31] [32] [33]
+Overfull \hbox (14.10497pt too wide) in paragraph at lines 1147--1147
 \OT1/cmr/m/it/12 works\OT1/cmr/m/n/12 . July 2019. \OT1/cmr/m/sc/12 url\OT1/cmr/m/n/12 : [][]$\OT1/cmtt/m/n/12 https : / / machinelearningmastery . com / gentle -[] introduction -[]
  []
 
-[31]
-Overfull \hbox (33.02744pt too wide) in paragraph at lines 1068--1068
+[34]
+Overfull \hbox (33.02744pt too wide) in paragraph at lines 1147--1147
 []\OT1/cmr/m/n/12 The 365 Team. \OT1/cmr/m/it/12 What Is Cross-Entropy Loss Func-tion? \OT1/cmr/m/n/12 2023. \OT1/cmr/m/sc/12 url\OT1/cmr/m/n/12 : [][]$\OT1/cmtt/m/n/12 https : / / 365datascience .
  []
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 1107.
-[32] [33] (Paper.aux)
+(Font)              <5> on input line 1186.
+[35] [36] (Paper.aux)
  ***********
 LaTeX2e <2023-11-01>
 L3 programming layer <2023-12-11>
@@ -716,17 +762,17 @@ Package logreq Info: Writing requests to 'Paper.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 16603 strings out of 474495
- 299142 string characters out of 5743936
+ 16693 strings out of 474495
+ 302332 string characters out of 5743936
  1940460 words of memory out of 5000000
- 38625 multiletter control sequences out of 15000+600000
+ 38708 multiletter control sequences out of 15000+600000
  565323 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 66i,10n,81p,749b,1468s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 66i,13n,81p,749b,1468s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/pat_h/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/pat_h/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/pat_h/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/pat_h/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/pat_h/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/pat_h/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/pat_h/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/pat_h/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/pat_h/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/pat_h/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/pat_h/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/pat_h/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/pat_h/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on Paper.pdf (34 pages, 1803816 bytes).
+Output written on Paper.pdf (37 pages, 1907103 bytes).
 PDF statistics:
- 543 PDF objects out of 1000 (max. 8388607)
- 103 named destinations out of 1000 (max. 500000)
- 284 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 584 PDF objects out of 1000 (max. 8388607)
+ 110 named destinations out of 1000 (max. 500000)
+ 329 words of extra memory for PDF output out of 10000 (max. 10000000)
 

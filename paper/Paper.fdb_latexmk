@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber Paper"] 0 "Paper.bcf" "Paper.bbl" "Paper" 1707905007 -1
+["biber Paper"] 0 "Paper.bcf" "Paper.bbl" "Paper" 1707990067 -1
   "./References.bib" 1707826793 8225 65d30fbb73b7be26ef884f71c49a4679 ""
-  "Paper.bcf" 1707905006 109817 43b00ff055c7e431190d67334dd2c226 "pdflatex"
+  "Paper.bcf" 1707990067 109883 4e783cd3f01e129d030ab01ae678d87a "pdflatex"
   (generated)
   "Paper.bbl"
   "Paper.blg"
   (rewritten before read)
-["pdflatex"] 1707905004 "c:/Users/pat_h/OneDrive/Desktop/public-repos/NN-Graph-Classifier/paper/Paper.tex" "Paper.pdf" "Paper" 1707905007 0
+["pdflatex"] 1707990064 "c:/Users/pat_h/OneDrive/Desktop/public-repos/NN-Graph-Classifier/paper/Paper.tex" "Paper.pdf" "Paper" 1707990067 0
   "C:/Users/pat_h/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1706894002 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/pat_h/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1704533271 24224029 4f8cb72dbe152c4e49d08adf97d53ae3 ""
   "C:/Users/pat_h/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmbx12.tfm" 1136765053 1324 c910af8c371558dc20f2d7822f66fe64 ""
@@ -99,13 +99,13 @@
   "C:/Users/pat_h/AppData/Local/Programs/MiKTeX/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1657800696 9714 ba3194bd52c8499b3f1e3eb91d409670 ""
   "C:/Users/pat_h/AppData/Local/Programs/MiKTeX/tex/latex/tools/multicol.sty" 1700599895 32515 51caec75eda9c8890135f12f1a4eddc3 ""
   "C:/Users/pat_h/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
-  "Paper.aux" 1707905006 12324 b442f51661f92b1368395aaa86286758 "pdflatex"
-  "Paper.bbl" 1707900756 35581 18ab4ecc1df3c661b5a5d3c7981df500 "biber Paper"
-  "Paper.out" 1707905006 3983 85430f437e605ff9c19ccf25f92fe4ac "pdflatex"
-  "Paper.run.xml" 1707905006 2312 27efdf81ffd4efd737925fef2d2a4f56 "pdflatex"
-  "Paper.tex" 1707905002 68399 344e0e38f58c81f644daa868408f4f6b ""
-  "Paper.toc" 1707905006 2198 23982f40f2d0fb6c127da0e8e390ff17 "pdflatex"
-  "c:/Users/pat_h/OneDrive/Desktop/public-repos/NN-Graph-Classifier/paper/Paper.tex" 1707905002 68399 344e0e38f58c81f644daa868408f4f6b ""
+  "Paper.aux" 1707990067 13546 5af44db4ad1ccf0f5a5f9155379a95e0 "pdflatex"
+  "Paper.bbl" 1707986529 35581 18ab4ecc1df3c661b5a5d3c7981df500 "biber Paper"
+  "Paper.out" 1707990067 3983 85430f437e605ff9c19ccf25f92fe4ac "pdflatex"
+  "Paper.run.xml" 1707990067 2312 27efdf81ffd4efd737925fef2d2a4f56 "pdflatex"
+  "Paper.tex" 1707990064 71401 7e2752d1bd3260a72c5aad5c8c86c0f0 ""
+  "Paper.toc" 1707990067 2198 5efb6cba09a577b9c18277490cf3aaa4 "pdflatex"
+  "c:/Users/pat_h/OneDrive/Desktop/public-repos/NN-Graph-Classifier/paper/Paper.tex" 1707990064 71401 7e2752d1bd3260a72c5aad5c8c86c0f0 ""
   "imgs/CIFAR_GEN_1_HIST_RESULTS.png" 1704540016 47820 ccff9bff9f25cb006213242ee9c8132b ""
   "imgs/CIFAR_GEN_SCP_1_HIST_RESULTS.png" 1704540233 55711 7532d1a0095278337c133fab8de1da42 ""
   "imgs/CIFAR_SCP_1_HIST_RESULTS.png" 1704540042 53268 d18c46ca78458652fe961a4119181837 ""
@@ -116,6 +116,15 @@
   "imgs/adam-opt.png" 1707898656 88379 8cbdda4df958c2b0244c246db7c6201b ""
   "imgs/cnn-overview.png" 1707822296 417997 fb0ab80e78173cb274fb1da5823425db ""
   "imgs/maxpooling.png" 1707823156 71344 bd87a66476f4963ae402335762dbe742 ""
+  "imgs/mis-as-nat-exp-20.jpg" 1707985844 4141 98f8196b22edd4173ce1906618093123 ""
+  "imgs/mis-as-nat-lognorm-544.jpg" 1707985863 6423 85580f799b54ab130e7a40768c562db6 ""
+  "imgs/mis-as-nat-norm-695.jpg" 1707985892 6448 c6e6855d59831181898a248bb9814748 ""
+  "imgs/mis-as-nat-unif-352.jpg" 1707985921 8446 19db8402a374806ba9a2849ac22005d2 ""
+  "imgs/mis-exp-count-in-dist.png" 1707989023 13810 ce81851c4a262876bd71d133aefc7a1a ""
+  "imgs/mis-lognorm-count-in-dist.png" 1707989031 13749 5f0a8dedae408b5f7a06f0127233f5cd ""
+  "imgs/mis-norm-count-in-dist.png" 1707989039 13622 2c4e742877fa2627ae70bd98fbba3d97 ""
+  "imgs/mis-unif-count-in-dist.png" 1707989044 14200 d37a75ac884719ab9ef1b7150c4002cd ""
+  "imgs/misclassified-gen-in-cifar-scp-1.png" 1707988974 26527 0aa761c3b4841a3789a5af7a7194f9e0 ""
   "imgs/natural_overview.png" 1704551042 48465 937090f9f01738c0542b7600c26b41a7 ""
   "imgs/neural-network-bishop.png" 1706886262 37816 2572515083dc45b7e772357f73615e31 ""
   "imgs/norm_460x345_overview.png" 1704635247 269608 3da613c08443f098260036654905f99e ""

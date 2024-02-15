@@ -36,6 +36,9 @@ defernumbers=false
 
 \begin{document}
 
+    \renewcommand{\figurename}{Visual}
+    \renewcommand{\tablename}{Visual}
+
     \begin{titlepage}
         
         \centering
@@ -219,7 +222,7 @@ defernumbers=false
             Had I selected more that would have led to an imbalanced dataset in the model. 
             In my project, the CIFAR-10 dataset will be labeled as CIFAR or natural. See Figure \ref{cifar-overview} for examples.
 
-            \begin{figure}[ht]
+            \begin{table}[ht]
             
                 \begin{center}
 
@@ -229,7 +232,7 @@ defernumbers=false
         
                 \end{center}
                 
-            \end{figure}
+            \end{table}
 
             
         \subsection{Scraped Graphs}
@@ -245,10 +248,10 @@ defernumbers=false
             he images came in various dimensions and were resized to the natural images 32x32 and converted to JPG format. 
             I’ll note here that JPG was chosen because it only has 3 color channels and no alpha channel. 
             If PNG is used then it could have a shape of (32,32,4) which adds unnecessary parameters for the scope of my objectives.
-            See Figure \ref{scraped-overview} for examples.
+            See Visual \ref{scraped-overview} for examples.
             
 
-            \begin{figure}[ht]
+            \begin{table}[ht]
             
                 \begin{center}
 
@@ -258,7 +261,7 @@ defernumbers=false
         
                 \end{center}
                 
-            \end{figure}
+            \end{table}
 
             
 
@@ -296,10 +299,10 @@ defernumbers=false
             They were not ‘duds’ like previously mentioned -- they looked typical, but because of the density functions’ parameters, 
             they were similar in appearance to a point where it would become a 50-50 decision if I had to classify them myself. 
             The cases when this happened are a minority, but it was important to keep this in mind as I evaluated the models later.
-            See Figure \ref{generated-overview} for examples. The density functions that created the random variables in the graph
+            See Visual \ref{generated-overview} for examples. The density functions that created the random variables in the graph
             are listed below.
             
-            \begin{figure}[ht]
+            \begin{table}[ht]
             
                 \begin{center}
 
@@ -309,7 +312,7 @@ defernumbers=false
         
                 \end{center}
                 
-            \end{figure}
+            \end{table}
 
             \textbf{Normal Distribution Density Function  $ X \sim \mathcal{N}(\mu, \sigma^2)  $}
                
@@ -362,7 +365,7 @@ defernumbers=false
         \subsection{Feed-Forward Neural Networks}
 
             The ANN process used in my model is called a feed-forward neural network or FNN. 
-            The structure of the model consists of three parts and are shown in Figure \ref{nn-bishop}: 
+            The structure of the model consists of three parts and are shown in Visual \ref{nn-bishop}: 
             an input layer, one or many hidden layers consisting of neurons, and an output layer. 
             The two main processes in the model are forward-propagation and back-propagation, 
             and can be summed up by their respective goals, producing an estimate and minimizing the loss. 
@@ -382,7 +385,7 @@ defernumbers=false
             Forward-propagation and back-propagation are repeated until the loss is minimized enough to suit the goal of the model.
         
             
-            \begin{figure}[ht]
+            \begin{table}[ht]
             
                 \begin{center}
 
@@ -392,7 +395,7 @@ defernumbers=false
         
                 \end{center}
                 
-            \end{figure}
+            \end{table}
 
           
 
@@ -431,10 +434,10 @@ defernumbers=false
                 What are these class scores? They indicate the estimate for each class or y target. 
                 As an example, the final output layer for CIFAR-10 would have dimensions of (1, 1, 10) 
                 since it has a total of 10 classes that an image can be sorted into \cite{cs231n2023} -- airplane, dog, cat, etc.
-                The step by step process can be seen more clearly in Figure \ref{cnn-overview-fig},
+                The step by step process can be seen more clearly in Visual \ref{cnn-overview-fig},
                 where the input image of car will be transformed into the most important features and then classified as a car.
 
-                \begin{figure}[ht]
+                \begin{table}[ht]
             
                     \begin{center}
     
@@ -444,7 +447,7 @@ defernumbers=false
             
                     \end{center}
                     
-                \end{figure}
+                \end{table}
     
 
                 What is a convolutional layer exactly? The four important parts are the filter, kernel, stride, and padding. 
@@ -465,7 +468,7 @@ defernumbers=false
                 so that no vital information is lost when the kernel slides over the image. With the parameters decided, 
                 one can now calculate the output volume size or shape of the output tensor.
                 
-                \textbf{Output Volume Size Equation:}
+                \textbf{Output Volume Size Equation \cite{cs231n2023}:}
                 
                 \begin{large}
                     
@@ -498,7 +501,7 @@ defernumbers=false
 
                 for i = 1, ... , F feature map patches
 
-                \begin{figure}[ht]
+                \begin{table}[ht]
             
                     \begin{center}
     
@@ -508,7 +511,7 @@ defernumbers=false
             
                     \end{center}
                     
-                \end{figure}
+                \end{table}
 
             \subsubsection{Rectified Linear Units}
 
@@ -531,7 +534,7 @@ defernumbers=false
 
                 \end{large}
 
-                \begin{figure}[ht]
+                \begin{table}[ht]
             
                     \begin{center}
     
@@ -541,7 +544,7 @@ defernumbers=false
             
                     \end{center}
                     
-                \end{figure}            
+                \end{table}            
 
                 
             \subsubsection{Cross-Entropy}
@@ -599,7 +602,7 @@ defernumbers=false
                 The major advantages of the Adam optimizer are that it only requires first-order gradients 
                 and has relatively little memory requirements.
 
-                \begin{figure}[ht]
+                \begin{table}[ht]
                 
                     \begin{center}
 
@@ -608,13 +611,13 @@ defernumbers=false
             
                     \end{center}
                     
-                \end{figure}
+                \end{table}
 
 
         \subsection{Python, Keras, and Libaries}
                 
             The implementation of this project wouldn’t be possible without the various tools used. 
-            I’ll describe them all briefly and list out the versions used for the sake of reproducibility in Table \ref{py-versions}. 
+            I’ll describe them all briefly and list out the versions used for the sake of reproducibility in Visual \ref{py-versions}. 
             TensorFlow \cite{abadi2016-tensorflow} is an end-to-end platform for building machine learning models 
             and that works with Keras \cite{chollet2015-keras}, which is a deep learning API written in Python connected to TensorFlow, 
             to create all of the models in this project. 
@@ -667,7 +670,7 @@ defernumbers=false
             Each model has a specific name consisting of acronyms to distinguish itself: 
             CIFAR is the natural images, SCP is the scraped graphs, GEN stands for the generated graphs, 
             and 1 indicates the model structure. This results in the four models: CIFAR\_SCP\_1, CIFAR\_GEN\_1, GEN\_SCP\_1, 
-            and CIFAR\_GEN\_SCP\_1. The model struture for all classifiers is shown by layer in Table \ref{model-layer-info}.
+            and CIFAR\_GEN\_SCP\_1. The model struture for all classifiers is shown by layer in Visual \ref{model-layer-info}.
 
             \begin{table}[htp]
 
@@ -744,7 +747,7 @@ defernumbers=false
             that one of my original theories about the scraped dataset could be correct 
             and that is the ‘graph-like’ nature of the images in the scraped dataset which are more artistic 
             or non-numerical representations of graphs. 
-            In Table \ref{cifar-graphs-1}, one can see that the input in CIFAR\_SCP\_1 and CIFAR\_GEN\_1 are balanced.
+            In Visual \ref{cifar-graphs-1}, one can see that the input in CIFAR\_SCP\_1 and CIFAR\_GEN\_1 are balanced.
                         
             GEN\_SCP\_1 was a major test of the simple graph classifier 
             since it will have indicated if my generated graphs were randomized enough to simulate what a bunch of scraped graphs would be.
@@ -756,7 +759,7 @@ defernumbers=false
             but it would have reinforced the previous intermediate conclusions about the nature of the datasets. 
             A very high accuracy would have meant all datasets are highly distinguishable from one another 
             and point towards tweaking the generated graphs. The information for GEN\_SCP\_1 and CIFAR\_GEN\_SCP\_1
-            can be seen in Table \ref{cifar-gen-scp-1}.
+            can be seen in Visual \ref{cifar-gen-scp-1}.
             
             \begin{table}[htp]
 
@@ -823,7 +826,7 @@ defernumbers=false
             \end{table}
 
             The images used, total number of images, training images, validation images, 
-            and model structure are all the same, except for the dimensions of the image and that can be seen in Table \ref{dist-dims-1}.
+            and model structure are all the same, except for the dimensions of the image and that can be seen in Visual \ref{dist-dims-1}.
             The reason for this is how much information is lost when the image is 32x32. 
             It was easy to assume that the model would perform poorly when the density function line almost completely disappears. 
             My solution was to increase the dimensions and thereby its quality. 
@@ -849,7 +852,7 @@ defernumbers=false
             The last simple graph classifier model, CIFAR\_GEN\_SCP\_1 performed 
             how the earlier models indicated with a 98.12 percent validation accuracy.
 
-            \begin{figure}
+            \begin{table}
             
                 \begin{center}
 
@@ -869,9 +872,9 @@ defernumbers=false
         
                 \end{center}
 
-            \end{figure}
+            \end{table}
 
-            \begin{figure}
+            \begin{table}
             
                 \begin{center}
 
@@ -891,7 +894,7 @@ defernumbers=false
         
                 \end{center}
                 
-            \end{figure}
+            \end{table}
 
 
             In order to properly evaluate the models, the accuracy and loss were not enough as indicators alone. 
@@ -910,8 +913,39 @@ defernumbers=false
             I took a deeper look at the falsely classified generated graphs in CIFAR\_SCP\_1. 
             The misclassifications were spread out pretty evenly, 
             but the graphs with uniform distribution were most often classified as natural images.
+            The counts can be seen in Visual \ref{mis-gen-in-cifar-scp-1-chart} 
+            and some examples of misclassified graphs are shown in Visual \ref{mis-gen-in-cifar-scp-1-examples}.
             
-            Falsely Labeled Generated Graphs in CIFAR\_SCP\_1
+            \begin{table}
+            
+                \begin{center}
+
+                    \includegraphics[scale=0.7]{misclassified-gen-in-cifar-scp-1.png}
+                    \caption{Misclassified generated graphs in CIFAIR\_SCP\_1}
+                    \label{mis-gen-in-cifar-scp-1-chart}
+        
+                \end{center}
+                
+            \end{table}
+
+            \begin{table}
+                \begin{center}
+                
+                    \begin{tabular}{ c  c }
+
+                        \includegraphics[scale=0.74]{mis-as-nat-exp-20.jpg} & \includegraphics[scale=0.74]{mis-as-nat-lognorm-544.jpg} \\
+                
+                        \includegraphics[scale=0.74]{mis-as-nat-norm-695.jpg} & \includegraphics[scale=0.74]{mis-as-nat-unif-352.jpg} \\
+
+                    \end{tabular}
+
+                    \caption{Examples of misclassified generated graphs as natural images}
+                    \label{mis-gen-in-cifar-scp-1-examples}
+
+                \end{center}
+
+            \end{table}
+
 
         \subsection{Distribution Graph Classifiers}
 
@@ -933,7 +967,7 @@ defernumbers=false
             The validation accuracy of DIST\_115x86\_1 and DIST\_153x115\_1 are hanging around 93 percent, 
             so the question becomes what are the images that are not getting classified correctly. 
             
-            \begin{figure}
+            \begin{table}
             
                 \begin{center}
 
@@ -963,23 +997,68 @@ defernumbers=false
                 \end{center}
              
                 
-            \end{figure}
+            \end{table}
 
             After the training was finished, I saved all the models and fed all 8,000 graphs into the DIST\_153x115\_1 for evaluation. 
             I decided to stick with evaluating one model since doing the same process for all would have been redundant 
             and not given me further insights into the data and model performance. 
             I chose DIST\_153x115\_1 instead of the other two because it performed slightly better 
             but using DIST\_115x86 would have been viable as well. The saved DIST\_153x115\_1 model performed well in the evaluation 
-            by accomplishing an accuracy of 96.54 percent. That means there were a total of 270 misclassifications out of 8,000 images. 
+            by accomplishing an accuracy of 96.54 percent. That means there were a total of 270 misclassifications out of 8,000 images,
+            and the results can be seen in Visual \ref{mis-all-count-in-dist} and Visual \ref{counts-all-gen-dist}.
             The probability distribution with the most misclassifications was the exponential distribution at 149, 
             while the lowest was the uniform distribution with only 6 misclassifications. 
             Why were graphs with an exponential distribution most often labelled incorrectly 
-            and by such a wide margin? A closer look at the data shows that almost all of the exponential distribution graphs 
+            and by such a wide margin? A closer look at the data in Visual \ref{mis-all-count-in-dist} shows that almost all of the exponential distribution graphs 
             that were misclassified where misclassified as the log-normal distribution. 
             When one looks at the images in question then it is easier to see why that is the case, 
             but it is still noteworthy how high the accuracy is despite the similarities. 
             There were 2,000 exponential distribution graphs and only 147 were labeled as log-normal distribution 
             which still indicates a strong performance.
+
+            \begin{table}
+
+                
+                
+                \begin{center}
+                    
+                    \begin{tabular}{ c  c }
+
+                        \includegraphics[scale=0.63]{mis-exp-count-in-dist.png} & \includegraphics[scale=0.63]{mis-lognorm-count-in-dist.png} \\
+                
+                        \includegraphics[scale=0.63]{mis-norm-count-in-dist.png} & \includegraphics[scale=0.63]{mis-unif-count-in-dist.png} \\
+
+                    \end{tabular}
+
+                    \caption{Counts of misclassified generated graphs in DIST\_153x115\_1}
+                    \label{mis-all-count-in-dist}
+
+                \end{center}
+
+            \end{table}
+
+            \begin{table}
+
+                \begin{center}
+
+                    \begin{tabular}{| l | c | c | c | c |}
+
+                        \hline
+                        \textbf{Prediction}   &    \textbf{Exp}   &   \textbf{Lognorm}   &    \textbf{Norm}    &    \textbf{Unif} \\
+                        \hline
+                        True                  & 1,851             & 1,925                & 1,960               & 1,994 \\
+                        False                 & 149               & 75                   & 40                  & 6 \\
+
+                        \hline
+
+                    \end{tabular}
+
+                    \caption{Counts of correctly and falsely classified generated graphs in DIST\_153x115\_1}
+                    \label{counts-all-gen-dist}
+
+                \end{center}
+
+            \end{table}
             
             In order to understand the results better and have a clear record of all the evaluations, 
             I created a CSV with relevant information. They include the ending prediction weight for each class, 
