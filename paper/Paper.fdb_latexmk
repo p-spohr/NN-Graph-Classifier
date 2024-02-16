@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber Paper"] 0 "Paper.bcf" "Paper.bbl" "Paper" 1707990067 -1
+["biber Paper"] 1708076312 "Paper.bcf" "Paper.bbl" "Paper" 1708082901 0
   "./References.bib" 1707826793 8225 65d30fbb73b7be26ef884f71c49a4679 ""
-  "Paper.bcf" 1707990067 109883 4e783cd3f01e129d030ab01ae678d87a "pdflatex"
+  "Paper.bcf" 1708082900 109883 4e783cd3f01e129d030ab01ae678d87a "pdflatex"
   (generated)
   "Paper.bbl"
   "Paper.blg"
   (rewritten before read)
-["pdflatex"] 1707990064 "c:/Users/pat_h/OneDrive/Desktop/public-repos/NN-Graph-Classifier/paper/Paper.tex" "Paper.pdf" "Paper" 1707990067 0
+["pdflatex"] 1708082898 "c:/Users/pat_h/OneDrive/Desktop/public-repos/NN-Graph-Classifier/paper/Paper.tex" "Paper.pdf" "Paper" 1708082901 0
   "C:/Users/pat_h/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1706894002 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/pat_h/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1704533271 24224029 4f8cb72dbe152c4e49d08adf97d53ae3 ""
   "C:/Users/pat_h/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmbx12.tfm" 1136765053 1324 c910af8c371558dc20f2d7822f66fe64 ""
@@ -31,7 +31,6 @@
   "C:/Users/pat_h/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1247596667 35752 024fb6c41858982481f6968b5fc26508 ""
   "C:/Users/pat_h/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1247596667 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "C:/Users/pat_h/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1247596666 32362 bc3f3eec7ab7d65fe700963d4017d32c ""
-  "C:/Users/pat_h/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1247596667 32762 7fee39e011c23b3589931effd97b9702 ""
   "C:/Users/pat_h/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1247596667 32726 39f0f9e62e84beb801509898a605dbd5 ""
   "C:/Users/pat_h/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1247596667 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "C:/Users/pat_h/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb" 1247596667 36118 fad905eba93cff5bce1e185fe980a177 ""
@@ -99,19 +98,20 @@
   "C:/Users/pat_h/AppData/Local/Programs/MiKTeX/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1657800696 9714 ba3194bd52c8499b3f1e3eb91d409670 ""
   "C:/Users/pat_h/AppData/Local/Programs/MiKTeX/tex/latex/tools/multicol.sty" 1700599895 32515 51caec75eda9c8890135f12f1a4eddc3 ""
   "C:/Users/pat_h/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
-  "Paper.aux" 1707990067 13546 5af44db4ad1ccf0f5a5f9155379a95e0 "pdflatex"
-  "Paper.bbl" 1707986529 35581 18ab4ecc1df3c661b5a5d3c7981df500 "biber Paper"
-  "Paper.out" 1707990067 3983 85430f437e605ff9c19ccf25f92fe4ac "pdflatex"
-  "Paper.run.xml" 1707990067 2312 27efdf81ffd4efd737925fef2d2a4f56 "pdflatex"
-  "Paper.tex" 1707990064 71401 7e2752d1bd3260a72c5aad5c8c86c0f0 ""
-  "Paper.toc" 1707990067 2198 5efb6cba09a577b9c18277490cf3aaa4 "pdflatex"
-  "c:/Users/pat_h/OneDrive/Desktop/public-repos/NN-Graph-Classifier/paper/Paper.tex" 1707990064 71401 7e2752d1bd3260a72c5aad5c8c86c0f0 ""
+  "Paper.aux" 1708082900 14212 f2962f59fc56b4e54b8848183ca79115 "pdflatex"
+  "Paper.bbl" 1708076317 35581 18ab4ecc1df3c661b5a5d3c7981df500 "biber Paper"
+  "Paper.out" 1708082900 3983 85430f437e605ff9c19ccf25f92fe4ac "pdflatex"
+  "Paper.run.xml" 1708082900 2312 27efdf81ffd4efd737925fef2d2a4f56 "pdflatex"
+  "Paper.tex" 1708082896 77224 97f4c94a6a7617568290b7c46fd52661 ""
+  "Paper.toc" 1708082900 2198 2469838d0cd7cd058bc064635edf4ac3 "pdflatex"
+  "c:/Users/pat_h/OneDrive/Desktop/public-repos/NN-Graph-Classifier/paper/Paper.tex" 1708082896 77224 97f4c94a6a7617568290b7c46fd52661 ""
   "imgs/CIFAR_GEN_1_HIST_RESULTS.png" 1704540016 47820 ccff9bff9f25cb006213242ee9c8132b ""
   "imgs/CIFAR_GEN_SCP_1_HIST_RESULTS.png" 1704540233 55711 7532d1a0095278337c133fab8de1da42 ""
   "imgs/CIFAR_SCP_1_HIST_RESULTS.png" 1704540042 53268 d18c46ca78458652fe961a4119181837 ""
   "imgs/DIST_115x86_1_HIST_RESULTS.png" 1704540659 53143 f448ebe2602b6dacab2fcdbcbea22aed ""
   "imgs/DIST_153x115_1_HIST_RESULTS.png" 1704540678 49810 4ec2a9d843126d44592da510446912b6 ""
   "imgs/DIST_32x32_1_HIST_RESULTS.png" 1704540604 53203 fbfa390ed3d362286db9decbb8cd8e89 ""
+  "imgs/DIST_32x32_2_HIST_RESULTS.png" 1705490575 50173 b61ca28c78a32c645d1891d7eaed6650 ""
   "imgs/GEN_SCP_1_HIST_RESULTS.png" 1704540166 52936 c5f7779a1c32669fa2287b838613fbfc ""
   "imgs/adam-opt.png" 1707898656 88379 8cbdda4df958c2b0244c246db7c6201b ""
   "imgs/cnn-overview.png" 1707822296 417997 fb0ab80e78173cb274fb1da5823425db ""

@@ -86,7 +86,7 @@ defernumbers=false
         \centering
         \large Course 
         \vspace{1mm}       
-        \\ \normalsize \textit{Statistical Learning in Finance and Insurance} 
+        \\ \normalsize \textit{Deep Learning Seminar} 
 
         \vspace{5mm}
 
@@ -141,7 +141,6 @@ defernumbers=false
             I personally learned a lot from a Stanford University course \cite{cs231n2023} 
             and \textit{An Introduction to Convolutional Neural Networks} from O’Shea and Nash \cite{oshea2015}.
 
-    % \newpage \section{Objectives}
 
         \subsection{Main Goals}
 
@@ -203,10 +202,22 @@ defernumbers=false
             The specifics of the three datasets used will be further explained in the subsequent section.
         
         
-    \newpage \section{Data}
+    \section{Data}
             
         \subsection{CIFAR-10 Images}
-    
+        
+            \begin{table}[h]
+            
+                \begin{center}
+
+                    \includegraphics[scale=0.6]{natural_overview.png}
+                    \caption{CIFAR-10 Natural Images (CIFAR) Deer Examples \cite{krizhevsky2009}}
+                    \label{cifar-overview}
+        
+                \end{center}
+                
+            \end{table}
+
             The CIFAR in CIFAR-10 stands for the Canadian Institute for Advanced Research and the 10 represents the 10 classes in the dataset: 
             airplane, automobile, bird, cat, deer, dog, frog, horse, ship, and truck \cite{krizhevsky2009}. 
             The data comes in six batches of 10,000 images with a total of 60,000 images. 
@@ -215,6 +226,7 @@ defernumbers=false
             The first two values represent the dimensions and the 3 stands for the red, green, and blue channels. 
             This data structure is known as a tensor. However, the original data type is a flat NumPy array of (3072,), 
             so each image needed to be reshaped to fit in the model with the graphs.
+            
 
             The updated dataset has 10,000 images (first-batch) that are all 32x32 and in JPG format. 
             Also, the 10 classes have been combined into one natural image class. 
@@ -222,17 +234,6 @@ defernumbers=false
             Had I selected more that would have led to an imbalanced dataset in the model. 
             In my project, the CIFAR-10 dataset will be labeled as CIFAR or natural. See Figure \ref{cifar-overview} for examples.
 
-            \begin{table}[ht]
-            
-                \begin{center}
-
-                    \includegraphics[scale=0.6]{natural_overview.png}
-                    \caption{CIFAR-10 Natural Images (CIFAR) \cite{krizhevsky2009}}
-                    \label{cifar-overview}
-        
-                \end{center}
-                
-            \end{table}
 
             
         \subsection{Scraped Graphs}
@@ -251,12 +252,12 @@ defernumbers=false
             See Visual \ref{scraped-overview} for examples.
             
 
-            \begin{table}[ht]
+            \begin{table}[h]
             
                 \begin{center}
 
                     \includegraphics[scale=0.6]{scraped_overview_original.png}
-                    \caption{Scraped Graphs (SCP) \cite{sunedition2021}}
+                    \caption{Scraped Graphs (SCP) Bar Chart Examples \cite{sunedition2021}}
                     \label{scraped-overview}
         
                 \end{center}
@@ -266,7 +267,19 @@ defernumbers=false
             
 
         \subsection{Generated Graphs}
+            
+            \begin{table}[h]
+                
+                \begin{center}
+
+                    \includegraphics[scale=0.6]{norm_460x345_overview.png}
+                    \caption{Generated Graphs (GEN) Normal Distribution Examples}
+                    \label{generated-overview}
         
+                \end{center}
+                
+            \end{table}
+
             Lastly, 8000 graphs were generated in a 460x345 dimension and JPG format. 
             The graphing library used was Matplotlib in Python, 
             but I’ll discuss the programs and libraries in more detail in the “Methods” section. 
@@ -302,17 +315,6 @@ defernumbers=false
             See Visual \ref{generated-overview} for examples. The density functions that created the random variables in the graph
             are listed below.
             
-            \begin{table}[ht]
-            
-                \begin{center}
-
-                    \includegraphics[scale=0.6]{norm_460x345_overview.png}
-                    \caption{Generated Graphs (GEN)}
-                    \label{generated-overview}
-        
-                \end{center}
-                
-            \end{table}
 
             \textbf{Normal Distribution Density Function  $ X \sim \mathcal{N}(\mu, \sigma^2)  $}
                
@@ -385,7 +387,7 @@ defernumbers=false
             Forward-propagation and back-propagation are repeated until the loss is minimized enough to suit the goal of the model.
         
             
-            \begin{table}[ht]
+            \begin{table}[h]
             
                 \begin{center}
 
@@ -437,7 +439,7 @@ defernumbers=false
                 The step by step process can be seen more clearly in Visual \ref{cnn-overview-fig},
                 where the input image of car will be transformed into the most important features and then classified as a car.
 
-                \begin{table}[ht]
+                \begin{table}[h]
             
                     \begin{center}
     
@@ -476,7 +478,8 @@ defernumbers=false
 
                 \end{large}
 
-                Where W := input volume size, F := receptive field size (kernel), P := amount of zero padding, and S := stride of kernel
+                \noindent Where W := input volume size, F := receptive field size (kernel), P := amount of zero padding, 
+                and S := stride of kernel
 
                 The convolutional layer is not the only new layer added in a CNN. 
                 The layer that often proceeds a convolutional layer is a pooling layer, or in the case of my model, a max pooling layer.
@@ -490,18 +493,8 @@ defernumbers=false
                 where only the highest value in every feature map or output filter goes on to the next layer. 
                 It can be noted that another pooling method, average pooling, can be used. 
                 It functions the same but averages the values in the feature patch.
-
-                \textbf{Max Pooling Function:}
-            
-                \begin{large}
-                    
-                    \[ \textnormal{M} = max(f_i)  \]
-
-                \end{large}
-
-                for i = 1, ... , F feature map patches
-
-                \begin{table}[ht]
+                
+                \begin{table}[h]
             
                     \begin{center}
     
@@ -512,6 +505,17 @@ defernumbers=false
                     \end{center}
                     
                 \end{table}
+
+                \textbf{Max Pooling Function:}
+            
+                \begin{large}
+                    
+                    \[ \textnormal{M} = max(f_i)  \]
+
+                \end{large}
+
+                \noindent for i = 1, ... , F feature map patches
+
 
             \subsubsection{Rectified Linear Units}
 
@@ -534,7 +538,7 @@ defernumbers=false
 
                 \end{large}
 
-                \begin{table}[ht]
+                \begin{table}[h]
             
                     \begin{center}
     
@@ -1061,7 +1065,7 @@ defernumbers=false
             \end{table}
             
             In order to understand the results better and have a clear record of all the evaluations, 
-            I created a CSV with relevant information. They include the ending prediction weight for each class, 
+            I created CSVs with relevant information. They include the ending prediction weight for each class, 
             the true or false prediction, the file name, the max weight, and the label based on the max.
             With the results readily available, it was easy to see some patterns. 
             In my earlier caveats, it was stated that the normal and log-normal distribution can look quite similar 
@@ -1070,62 +1074,144 @@ defernumbers=false
             Also, from the earlier section about the generated graphs, 
             I mentioned the so-called ‘duds’ and that comes up in the evaluations as well. 
             All of the uniform distribution graphs misclassified can be considered ‘duds’ in that they appear blank.
+
+            \begin{table}
+
+                \scalebox{0.75}{
+
+                    \begin{tabular}{l | l | l | l | l | l | l | l | l}
+                        \hline
+                        \textbf{exp}         & \textbf{lognorm}     & \textbf{norm}         & \textbf{unif}       & \textbf{max}       & \textbf{file\_name}         & \textbf{actual}  & \textbf{label}   & \textbf{prediction} \\
+                        \hline
+                        -4.1661463  & 8.161812    & 0.9788155    & -10.229221 & 8.161812  & exp\_12.jpeg       & exp     & lognorm & False      \\
+                        3.8511171   & 4.496506    & -3.405139    & -5.2995405 & 4.496506  & exp\_2.jpeg        & exp     & lognorm & False      \\
+                        5.872565    & 11.971514   & -6.275291    & -12.128517 & 11.971514 & exp\_20.jpeg       & exp     & lognorm & False      \\
+                        9.207311    & 10.764248   & -11.954131   & -5.3854074 & 10.764248 & exp\_3.jpeg        & exp     & lognorm & False      \\
+                        -5.917483   & 15.367903   & -4.7242074   & -5.200668  & 15.367903 & exp\_5.jpeg        & exp     & lognorm & False      \\
+                        6.1337843   & 6.400875    & -5.021023    & -7.4242744 & 6.400875  & exp\_8.jpeg        & exp     & lognorm & False      \\
+                        0.51164746  & 8.585008    & -3.2878444   & -6.293257  & 8.585008  & exp\_9.jpeg        & exp     & lognorm & False      \\
+                        -2.7664876  & 8.546496    & 0.33398134   & -9.835137  & 8.546496  & exp\_hand\_0.jpeg  & exp     & lognorm & False      \\
+                        -13.257631  & 5.875923    & -2.4565024   & 7.38458    & 7.38458   & lognorm\_0.jpeg    & lognorm & unif    & False      \\
+                        3.7302907   & 2.0135944   & -0.048096493 & -11.51519  & 3.7302907 & lognorm\_5.jpeg    & lognorm & exp     & False      \\
+                        -14.977435  & 3.678837    & 1.5030111    & 1.7347182  & 3.678837  & norm\_1.jpeg       & norm    & lognorm & False      \\
+                        -0.31633773 & 5.5405626   & 1.6448251    & -18.00231  & 5.5405626 & norm\_11.jpeg      & norm    & lognorm & False      \\
+                        -14.40909   & 10.438942   & 7.7604384    & -26.327517 & 10.438942 & norm\_13.jpeg      & norm    & lognorm & False      \\
+                        -5.3496103  & 7.2749767   & 1.1707792    & -6.384265  & 7.2749767 & norm\_14.jpeg      & norm    & lognorm & False      \\
+                        -6.992462   & 7.189061    & 4.9432883    & -15.288852 & 7.189061  & norm\_15.jpeg      & norm    & lognorm & False      \\
+                        -4.783489   & 4.332031    & 3.8387465    & -14.778937 & 4.332031  & norm\_19.jpeg      & norm    & lognorm & False      \\
+                        -23.318886  & 12.883771   & -0.8641091   & 5.143599   & 12.883771 & norm\_4.jpeg       & norm    & lognorm & False      \\
+                        -25.816198  & 16.998684   & 4.5914965    & -9.728744  & 16.998684 & norm\_8.jpeg       & norm    & lognorm & False      \\
+                        -6.6115365  & 7.848427    & 0.57640886   & -4.26034   & 7.848427  & norm\_9.jpeg       & norm    & lognorm & False      \\
+                        -0.7095418  & 1.1841375   & -0.53598833  & -1.6236649 & 1.1841375 & unif\_0.jpeg       & unif    & lognorm & False      \\
+                        -4.572587   & 5.3358355   & 0.4110088    & -3.925213  & 5.3358355 & unif\_1.jpeg       & unif    & lognorm & False      \\
+                        -2.4820209  & -0.05105117 & 2.7819424    & -4.3270063 & 2.7819424 & unif\_10.jpeg      & unif    & norm    & False      \\
+                        -4.820385   & 9.742123    & -7.255406    & 6.477165   & 9.742123  & unif\_11.jpeg      & unif    & lognorm & False      \\
+                        -0.5606266  & 6.14713     & -2.2170813   & -3.020845  & 6.14713   & unif\_12.jpeg      & unif    & lognorm & False      \\
+                        1.1152176   & 1.1827534   & -0.67093164  & -5.319949  & 1.1827534 & unif\_13.jpeg      & unif    & lognorm & False      \\
+                        -0.19624099 & 7.653762    & -2.4959579   & -3.569571  & 7.653762  & unif\_14.jpeg      & unif    & lognorm & False      \\
+                        -0.46984562 & 5.252478    & -4.9778605   & 1.5037757  & 5.252478  & unif\_16.jpeg      & unif    & lognorm & False      \\
+                        -0.20320779 & 4.1991606   & 1.5740888    & -10.120164 & 4.1991606 & unif\_17.jpeg      & unif    & lognorm & False      \\
+                        -2.3884668  & 3.9697368   & -0.6534233   & -2.8202808 & 3.9697368 & unif\_2.jpeg       & unif    & lognorm & False      \\
+                        1.6306777   & 6.3168035   & -0.7305184   & -8.0671625 & 6.3168035 & unif\_3.jpeg       & unif    & lognorm & False      \\
+                        -5.6656113  & 4.946749    & 1.8187       & -6.4847775 & 4.946749  & unif\_4.jpeg       & unif    & lognorm & False      \\
+                        -4.4202156  & 3.0252044   & 1.0488026    & -2.0555344 & 3.0252044 & unif\_5.jpeg       & unif    & lognorm & False      \\
+                        5.331371    & 4.629284    & -3.9633603   & -6.628367  & 5.331371  & unif\_6.jpeg       & unif    & exp     & False      \\
+                        -4.064364   & 4.5016537   & -3.487114    & 3.3282218  & 4.5016537 & unif\_8.jpeg       & unif    & lognorm & False      \\
+                        -6.592189   & -0.6548197  & 2.7110033    & -1.7038764 & 2.7110033 & unif\_9.jpeg       & unif    & norm    & False      \\
+                        0.5345101   & 0.08001919  & 0.43601054   & -6.1528854 & 0.5345101 & unif\_hand\_0.jpeg & unif    & exp     & False      \\
+                        \hline   
+                
+                    \end{tabular}
+                    
+                }
+
+                \caption{All Misclassified Images in Final Test Evaluation}
+                \label{all-mis-test-eval}
+
+            \end{table}
             
             To wrap up my evaluations and to truly assess my generated graphs and models, 
-            I needed to use graphs that have not been used in the model previously. 
-            I simply gathered 20 graphs of every distribution type from random sources online 
-            and then drew one graph of each distribution by hand. I felt this would add some realistic grounding to the final evaluation. 
+            I needed to use graphs that have not been used in any model previously. 
+            Visual \ref{all-mis-test-eval} contains all images in the final test evaluation that were misclassified.
+            To get this, I simply gathered 20 graphs of every distribution type from random sources online 
+            and then added one graph of each distribution drawn by hand. 
+            I felt this would add some realistic grounding to the final evaluation. 
             Each distribution had 21 graphs, so a total of 84 graphs. 
             The final evaluation accuracy was 59.10 percent and fell in line with my more hopeful expectations. 
             This evaluation is similar to when the scraped graphs where put into CIFAR\_GEN\_1 and if you can remember, 
             the accuracy was only 37.22 percent. So overall, it is a positive development. 
             Just like before the question becomes what was getting misclassified 
             and here is where the results diverged from my original predictions. 
-            Almost all of the misclassified graphs were misclassified as log-normal. 
+            Almost all of the misclassified graphs were misclassified as log-normal,
+            which can be seen in the 'label' column in Visual \ref{all-mis-test-eval}. 
             And if one analyzed this more granularly then one can see 
             that the uniform distribution graphs were overwhelmingly misclassified as log-normal. 
             13 graphs out of the 21 uniform graphs were misclassified as log-normal. 
             It is surprising how 61.90 percent of uniform graphs in the test dataset were misclassified as log-normal 
             since the generated uniform graphs were predicted so accurately in DIST\_153x115\_1.
+            I can conclude for now that the model needs more diverse training images to account for the variety in graphs found online
+            and more images to train on.
             
-        
-        \newpage \subsection{Conclusions and Further Research}
 
-       
-            As a whole, I can say that the overall goals were accomplished. 
+        
+        \subsection{Conclusions and Further Research}
+
+            As a whole, I can say that the main goals were accomplished. 
             I have a model that can successfully identify graphs from natural images 
-            with greater than 98 percent accuracy and another model that can successfully identify graphs 
+            with greater than 98 percent accuracy and another model that can successfully identify my generated graphs 
             with four different distribution types with around 93 percent accuracy. 
+            However, when more diverse graphs are included this drops down to 59.10 percent as shown in the 
+            final test evaluation and in Visual \ref{all-mis-test-eval}.
             Addendum to these results is the caveat from earlier that the generated graphs could be considered as a disjunct subset, 
             if one considers the scraped graphs to be a genuine sample of possible and currently available graphs. 
             The GEN\_SCP\_1’s high accuracy points towards this theory but a large limiting factor is the small sample size -- 
             only 8,000 generated graphs and 7,753 scraped graphs. 
             Some results that surprised me were that scraped graphs in CIFAR\_GEN\_1 were misclassified as natural images 
             around 63 percent of the time. This could indicate 
-            that the generated graphs don’t consider the more chaotic nature of graph design. 
+            that the generated graphs don’t consider the more chaotic nature of graph design -- 
+            this is substantiated by the final test evaluation as well.
             It would be safe to say that the generated graphs are very conservative in appearance. 
             However, this was an original design choice to reduce the amount of variables in the graphs design, 
             like not having two graphs in one image or keeping to the standard of having a complete graph in each image. 
             Many graphs, like the ones in the scraped dataset 
-            and the ones I used in the final test evaluation don’t have any axes, labels, or titles. 
+            and the ones I used in the final test evaluation, don’t have any axes, labels, or titles. 
             This enforces the idea that many of the images in SCP and many graphs in general are more ‘graph-like’ 
             and not graphs in a very defined sense.
             Another surprise was the difference in how the uniform distribution graphs were getting misclassified.
             Uniform distribution graphs in DIST\_153x115\_1 were classified accurately around 99 percent of the time, 
-            but 20 percent of uniform graphs in CIFAR\_SCP\_1 were misclassified as natural images. 
+            but 20 percent of generated uniform graphs in CIFAR\_SCP\_1 were misclassified as natural images. 
             Why were the graphs easily classified in DIST\_153x115\_1 but not in CIFAR\_SCP\_1? 
-            Perhaps graphs with the uniform distribution are unique from the other distribution graphs but not very unique from natural images.
+            Perhaps graphs with the uniform distribution are unique from the other distribution graphs 
+            but not very unique from natural images. The final test evaluation bucked this trend by
+            classifying uniform distribution as log-normal for a majority of the graphs.
+            However, in the final test evaluation almost all of the misclassified images were
+            classified as log-normal, so this might point to an issue with the training images.
             
+            \begin{table}[h]
+
+                \begin{center}
+
+                    \includegraphics[scale=0.6]{DIST_32x32_2_HIST_RESULTS.png}
+                    \caption{DIST\_32x32\_2 Training and Validation Accuracy and Loss}
+                    \label{dist-32-32-2-val-loss}
+        
+                \end{center}
+            
+            \end{table}
+
             To conclude I’ll propose some possible changes and improvements to further this line of research. 
             The quickest improvements could simply come from changing the model structure and tweaking the parameters. 
             While I only used one convolutional layer at a time, 
             another common CNN architecture is to stack two convolutional layers before each pooling later. 
             This is strongly encouraged as this allows for more complex features of the input vector to be selected \cite{oshea2015}. 
             Regarding the parameters, I built a second model by doubling the number of filters in the convolution layers. 
+            The training and validation accuracy and loss of DIST\_32x32\_2
+            are shown in Visual \ref{dist-32-32-2-val-loss} --
+            the 2 indicates the second model used.
             There were minor improvements to the validation accuracy of the DIST\_32x32\_1, 
             but the issue of overfitting is seen after 10 epochs. Secondly, one could use more images to train each model. 
             It would be quite easy to generate 20,000 graphs, but that depends on the quality and ‘generalness’ of the graphs. 
-            As seen, the generated graphs used in this experiment were highly distinguishable from the scraped graphs 
+            The generated graphs used in this experiment were highly distinguishable from the scraped graphs 
             and that leads to the next change, and that is improving the generated graphs. 
             The scripts that created the graphs can be improved to increase variability, 
             but another way is adding more preprocessing layers. TensorFlow has a host of different methods 
@@ -1140,53 +1226,11 @@ defernumbers=false
             With the pages identified, they could be returned to the user for quick viewing. 
             From there the model could be expanded to only retrieve the graphs themselves and organize them into types. 
             This would require more advanced techniques, 
-            especially those in Explainable AI \cite{kamakshi2023}, 
+            especially those in the field of explainable AI \cite{kamakshi2023}, 
             to target specific parts on a page and be able to extract more information.
         
     
     \printbibliography[heading=bibintoc, title={References}]
 
-
-    \begin{table}[htp]
-        \begin{center}
-            
-            \begin{tabular}{ | l | l | l | l | l | }
-
-                \hline
-                \textbf{Ticker}      & \textbf{Name}                             & \textbf{Geschäft} \\
-                \hline
-                COHR                 & Coherent, Inc.                            & Laser \\
-                CTB                  & Cooper Tire \& Rubber Company             & Reifen \\
-                EQT                  & EQT Corporation                           & Energie \\
-                GOLD                 & Barrick Gold Corporation                  & Bergarbeit \\
-                NSEC                 & National Security Group, Inc.             & Versicherung \\
-                OTTR                 & Otter Tail Corporation                    & Energie \\
-                PEP                  & PepsiCo, Inc.                             & Getränke \\
-                SKYW                 & SkyWest, Inc.                             & Fluglinie \\
-                SNFCA                & Security National Financial Corporation   & Lebensversicherung \\
-                WY                   & Weyerhaeuser Company                      & Abholzung \\
-                \hline
-
-            \end{tabular}
-
-        \end{center}
-    \end{table}
-
-
-
-    \begin{Large} \[ V_p = \sum_{j=1}^{A}\sum_{i=1}^{M}P^T_{i+1} \cdot w_i \] \end{Large}
-
-    \begin{multicols}{2}
-        \begin{footnotesize}
-            
-            \noindent M = 360 Monate \\
-            A = 10 Aktien \\
-            P = tägliche Preise von Aktie A im Monat M \\
-            w = monatliche Gewicht von Aktie A im Monat M \\
-            $P_{1+1}$ = Preise im Februar 1990 von Aktie A \\
-            $w_1$ = Gewicht im Januar 1990 von Aktie A 
-
-        \end{footnotesize}
-    \end{multicols}
 
 \end{document}
